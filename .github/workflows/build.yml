@@ -17,3 +17,9 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
       - run: make build
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - run: make docker-build
