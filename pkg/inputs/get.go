@@ -1,8 +1,8 @@
-package config
+package inputs
 
 import (
-	"github.com/rootly-io/cli/pkg/config/env"
-	"github.com/rootly-io/cli/pkg/config/flags"
+	"github.com/rootly-io/cli/pkg/inputs/env"
+	"github.com/rootly-io/cli/pkg/inputs/flags"
 	"github.com/rootly-io/cli/pkg/log"
 	"github.com/spf13/cobra"
 )

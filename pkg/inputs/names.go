@@ -1,4 +1,4 @@
-package config
+package inputs
 
 // A certain piece of config
 type ConfigPiece string
