@@ -10,10 +10,11 @@ import (
 	"github.com/rootly-io/rootly.go"
 )
 
-type pulseData struct {
+// Wrapper for some API data
+type apiData struct {
 	Data struct {
-		Type       string       `json:"type"`
-		Attributes rootly.Pulse `json:"attributes"`
+		Type       string      `json:"type"`
+		Attributes interface{} `json:"attributes"`
 	} `json:"data"`
 }
 
@@ -25,16 +26,13 @@ func CreatePulse(
 ) log.CtxErr {
 	log.Info("Creating pulse with summary of", *pulse.Summary)
 
+	// Wrapping data
+	pulseData := apiData{}
+	pulseData.Data.Type = "pulses"
+	pulseData.Data.Attributes = pulse
+
 	// Marshaling data
-	data, err := json.Marshal(pulseData{
-		Data: struct {
-			Type       string       "json:\"type\""
-			Attributes rootly.Pulse "json:\"attributes\""
-		}{
-			Type:       "pulses",
-			Attributes: pulse,
-		},
-	})
+	data, err := json.Marshal(pulseData)
 	if err != nil {
 		return log.CtxErr{
 			Context: "Failed to marshal data for creating a pulse",
