@@ -10,7 +10,7 @@ import (
 var pulseCmd = &cobra.Command{
 	Use:     "pulse",
 	Short:   "Send a pulse",
-	Example: "rootly pulse --summary=\"Deployed Site\" --api-key=\"ABC123\" --labels=\"Version|#|3,Deployed By|#|Harry Potter\"",
+	Example: "rootly pulse --summary=\"Deployed Site\" --api-key=\"ABC123\" --label=\"Version|#|3\" --label=\"Deployed By|#|Harry Potter\"",
 	Run: func(cmd *cobra.Command, args []string) {
 		log.Info("Getting inputs")
 
