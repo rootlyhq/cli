@@ -11,18 +11,22 @@ func AddKeyFlag(cmd *cobra.Command) {
 	)
 }
 
-// Add the standard set of flags specific to pulses
-func AddPulseFlags(cmd *cobra.Command) {
+// Add a flag for a summary
+func AddPulseSummaryFlag(cmd *cobra.Command) {
 	cmd.Flags().StringP(
 		string(PulseSummaryName),
 		"p",
 		"",
 		"The summary of the command being ran",
 	)
+}
+
+// Add a flag for labels
+func AddPulseLabelsFlag(cmd *cobra.Command) {
 	cmd.Flags().StringArrayP(
 		string(PulseLabelsName),
 		"l",
 		[]string{},
-		"Labels associated with the command. Seperated by commands with the key and value of each label being seperated by a colon.",
+		"Labels associated with the command. Give a new flag for each label and separate the key from the value with an equals sign.",
 	)
 }

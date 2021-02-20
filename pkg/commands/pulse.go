@@ -1,6 +1,8 @@
 package commands
 
 import (
+	"strings"
+
 	"github.com/rootly-io/cli/pkg/api"
 	"github.com/rootly-io/cli/pkg/inputs"
 	"github.com/rootly-io/cli/pkg/log"
@@ -10,7 +12,7 @@ import (
 var pulseCmd = &cobra.Command{
 	Use:     "pulse",
 	Short:   "Send a pulse",
-	Example: "rootly pulse --summary=\"Deployed Site\" --api-key=\"ABC123\" --label=\"Version|#|3\" --label=\"Deployed By|#|Harry Potter\"",
+	Example: "rootly pulse --api-key=\"ABC123\" --label=\"Version|#|3\" --label=\"Deployed By|#|Harry Potter\" Deployed Site",
 	Run: func(cmd *cobra.Command, args []string) {
 		log.Info("Getting inputs")
 
@@ -19,10 +21,7 @@ var pulseCmd = &cobra.Command{
 			log.Fatal(err)
 		}
 
-		summary, err := inputs.GetString(inputs.PulseSummaryName, cmd, true)
-		if err.Error != nil {
-			log.Fatal(err)
-		}
+		summary := strings.Join(args, " ")
 
 		labels, err := inputs.GetStringSimpleMapArray(inputs.PulseLabelsName, cmd, false)
 		if err.Error != nil {
@@ -53,5 +52,5 @@ func init() {
 
 	// Flags
 	inputs.AddKeyFlag(pulseCmd)
-	inputs.AddPulseFlags(pulseCmd)
+	inputs.AddPulseLabelsFlag(pulseCmd)
 }

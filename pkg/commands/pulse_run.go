@@ -78,5 +78,6 @@ func init() {
 
 	// Flags
 	inputs.AddKeyFlag(pulseRunCmd)
-	inputs.AddPulseFlags(pulseRunCmd)
+	inputs.AddPulseLabelsFlag(pulseRunCmd)
+	inputs.AddPulseSummaryFlag(pulseRunCmd)
 }
