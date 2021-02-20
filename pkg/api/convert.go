@@ -35,7 +35,7 @@ func convertPulse(pulse Pulse) (string, log.CtxErr) {
 		Labels:    &labels,
 	}
 
-	// Marsheling the data
+	// Marshaling the data
 	jsonData, err := jsonMarshal(finalData)
 	if err.Error != nil {
 		return "", err
@@ -46,7 +46,6 @@ func convertPulse(pulse Pulse) (string, log.CtxErr) {
 
 // Light wrapper around json.Marhal for consistent errors
 func jsonMarshal(data interface{}) (string, log.CtxErr) {
-	// Marshaling data
 	str, err := json.Marshal(data)
 	if err != nil {
 		return "", log.CtxErr{
