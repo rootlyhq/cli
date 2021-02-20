@@ -1,10 +1,13 @@
 package config
 
+// A certain piece of config
+type ConfigPiece string
+
 const (
 	// Name for the summary name related to pulses
-	PulseSummaryName = "summary"
+	PulseSummaryName ConfigPiece = "summary"
 	// Name for the labels name related to pulses
-	PulseLabelsName = "labels"
+	PulseLabelsName ConfigPiece = "labels"
 	// Name for the API key
-	ApiKeyName = "api-key"
+	ApiKeyName ConfigPiece = "api-key"
 )

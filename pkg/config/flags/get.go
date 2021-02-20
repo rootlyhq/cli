@@ -6,42 +6,27 @@ import (
 )
 
 // Error template for a failure to get the flag
-func failedToGetErr(flag string, err error) log.CtxErr {
+func failedToGetErr(name string, err error) log.CtxErr {
 	return log.CtxErr{
-		Context: "Failed to get flag called " + flag,
+		Context: "Failed to get flag called " + name,
 		Error:   err,
 	}
 }
 
-// Error template for a blank value
-func failedToProvideValue(flag string) log.CtxErr {
-	return log.NewErr("Please provide a value for the " + flag + " flag")
-}
-
-// Get the value of a required string flag
-func GetRequiredString(flag string, cmd *cobra.Command) (string, log.CtxErr) {
-	val, err := cmd.Flags().GetString(flag)
+// Get the value of a string flag
+func GetString(name string, cmd *cobra.Command) (string, log.CtxErr) {
+	val, err := cmd.Flags().GetString(name)
 	if err != nil {
-		return "", failedToGetErr(flag, err)
+		return "", failedToGetErr(name, err)
 	}
-
-	if val == "" {
-		return "", failedToProvideValue(flag)
-	}
-
 	return val, log.CtxErr{}
 }
 
-// Get the value of a required string  array flag
-func GetRequiredStringArray(flag string, cmd *cobra.Command) ([]string, log.CtxErr) {
-	val, err := cmd.Flags().GetStringArray(flag)
+// Get the value of a string array flag
+func GetStringArray(name string, cmd *cobra.Command) ([]string, log.CtxErr) {
+	val, err := cmd.Flags().GetStringArray(name)
 	if err != nil {
-		return []string{}, failedToGetErr(flag, err)
+		return []string{}, failedToGetErr(name, err)
 	}
-
-	if len(val) == 0 {
-		return []string{}, failedToProvideValue(flag)
-	}
-
 	return val, log.CtxErr{}
 }
