@@ -25,7 +25,7 @@ var rootCmd = &cobra.Command{
 // Execute the root command
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
-		log.Error(log.CtxErr{
+		log.Fatal(log.CtxErr{
 			Context: "Failed to execute root command",
 			Error:   err,
 		})
