@@ -33,3 +33,11 @@ func Info(ctx ...interface{}) {
 func Success(ctx ...interface{}) {
 	lumber.Success(ctx...)
 }
+
+// Log a warning to the console
+// At the moment this function is a simple wrapper around
+// the lumber module but exists for easy switching to other
+// log formats
+func Warning(ctx ...interface{}) {
+	lumber.Warning(ctx...)
+}

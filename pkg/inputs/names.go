@@ -7,7 +7,7 @@ const (
 	// Name for the summary name related to pulses
 	PulseSummaryName ConfigPiece = "summary"
 	// Name for the labels name related to pulses
-	PulseLabelsName ConfigPiece = "labels"
+	PulseLabelsName ConfigPiece = "label"
 	// Name for the API key
 	ApiKeyName ConfigPiece = "api-key"
 )
