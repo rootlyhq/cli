@@ -23,7 +23,7 @@ func CreatePulse(
 	client *rootly.Client,
 	secProvider *securityprovider.SecurityProviderBearerToken,
 ) log.CtxErr {
-	log.Info("Creating pulse with summary of", pulse.Summary)
+	log.Info("Creating pulse with summary of", *pulse.Summary)
 
 	// Marshaling data
 	data, err := json.Marshal(pulseData{
@@ -77,6 +77,6 @@ func CreatePulse(
 		return log.NewErr("Failed to create pulse with exit code " + resp.Status)
 	}
 
-	log.Success("Created pulse with summary of", pulse.Summary)
+	log.Success("Created pulse with summary of", *pulse.Summary)
 	return log.CtxErr{}
 }
