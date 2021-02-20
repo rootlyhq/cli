@@ -6,3 +6,6 @@ docker-build:
 
 clean:
 	rm -r ./bin
+
+test:
+	go test -count=1 -v ./...
