@@ -1,6 +1,10 @@
 package commands
 
 import (
+	"fmt"
+
+	"github.com/rootly-io/cli/pkg/api"
+	"github.com/rootly-io/cli/pkg/commands/pulserun"
 	"github.com/rootly-io/cli/pkg/inputs"
 	"github.com/rootly-io/cli/pkg/log"
 	"github.com/spf13/cobra"
@@ -8,7 +12,7 @@ import (
 
 var pulseRunCmd = &cobra.Command{
 	Use:     "pulse-run",
-	Short:   "Run a command and send a pulse with the exit code",
+	Short:   "Run a terminal command and send a pulse with the exit code",
 	Example: "rootly pulse-run --api-key\"ABC123\" --summary\"Deploy Website\" --label=\"Stage|#|Prod\" sh deploy.sh",
 	Run: func(cmd *cobra.Command, args []string) {
 		log.Info("Getting inputs")
@@ -38,6 +42,33 @@ var pulseRunCmd = &cobra.Command{
 
 		log.Success("Got inputs")
 
+		client, err := api.GenClient()
+		if err.Error != nil {
+			log.Fatal(err)
+		}
+
+		secProvider, err := api.GenSecurityProvider(apiKey)
+		if err.Error != nil {
+			log.Fatal(err)
+		}
+
+		exitCode, err := pulserun.RunProgram(prog, progArgs)
+		if err.Error != nil {
+			log.Fatal(err)
+		}
+		labels = append(
+			labels,
+			map[string]string{"key": "Exit Status", "value": fmt.Sprint(exitCode)},
+		)
+
+		err = api.CreatePulse(
+			api.Pulse{Summary: summary, Labels: labels},
+			client,
+			secProvider,
+		)
+		if err.Error != nil {
+			log.Fatal(err)
+		}
 	},
 }
 
