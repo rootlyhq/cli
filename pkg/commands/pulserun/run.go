@@ -3,6 +3,7 @@ package pulserun
 import (
 	"os"
 	"os/exec"
+	"strings"
 
 	"github.com/rootly-io/cli/pkg/log"
 )
@@ -28,7 +29,7 @@ func RunProgram(program string, args []string) (int, log.CtxErr) {
 		exitErr, ok := err.(*exec.ExitError)
 		if ok {
 			exitCode := exitErr.ExitCode()
-			log.Warning(program, args, "failed with exit code of", exitCode)
+			log.Warning(program, strings.Join(args, " "), "failed with exit code of", exitCode)
 			return exitErr.ExitCode(), log.CtxErr{}
 		}
 	}
