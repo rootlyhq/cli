@@ -24,3 +24,11 @@ jobs:
           go mod tidy
           git diff --exit-code go.mod
           git diff --exit-code go.sum
+  hadolint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Linting docker/Dockerfile
+        uses: brpaz/hadolint-action@master
+        with:
+          dockerfile: 'docker/Dockerfile'
