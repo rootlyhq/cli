@@ -1,0 +1,30 @@
+release:
+  github:
+    owner: rootly-io
+    name: cli
+  prerelease: auto
+before:
+  hooks:
+    - go mod download
+builds:
+  - goos:
+      - darwin
+      - linux
+      - windows
+    goarch:
+      - amd64
+      - arm
+      - arm64
+    goarm:
+      - 6
+      - 7
+brews:
+  - tap:
+      owner: rootly-io
+      name: homebrew-tap
+    folder: Formula
+    homepage: 'https://rootly.io'
+    description: 'Command line tool for rootly.io'
+    install: bin.install "rootly"
+dockers:
+  - dockerfile: docker/Dockerfile
