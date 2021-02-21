@@ -15,7 +15,7 @@ func TestConvertPulse(t *testing.T) {
 	}{
 		{
 			pulse:    Pulse{Summary: "Hello World!"},
-			expected: "{\"data\":{\"type\":\"pulses\",\"attributes\":{\"created_at\":\"\",\"labels\":null,\"summary\":\"Hello World!\",\"updated_at\":\"\"}}}",
+			expected: "{\"data\":{\"type\":\"pulses\",\"attributes\":{\"created_at\":\"\",\"summary\":\"Hello World!\",\"updated_at\":\"\"}}}",
 		},
 		{
 			pulse: Pulse{

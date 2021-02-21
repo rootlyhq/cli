@@ -11,7 +11,7 @@ func TestConvertToSimpleMapArray(t *testing.T) {
 	const (
 		keyName   = "key"
 		valName   = "value"
-		delimiter = "|#|"
+		delimiter = "="
 	)
 
 	tt := []struct {
