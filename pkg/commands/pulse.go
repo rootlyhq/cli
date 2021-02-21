@@ -30,6 +30,16 @@ var pulseCmd = &cobra.Command{
 			log.Fatal(err)
 		}
 
+		environments, err := inputs.GetStringArray(inputs.PulseEnvironmentsName, cmd, false)
+		if err.Error != nil {
+			log.Fatal(err)
+		}
+
+		services, err := inputs.GetStringArray(inputs.PulseServicesName, cmd, false)
+		if err.Error != nil {
+			log.Fatal(err)
+		}
+
 		log.Success("Got inputs")
 
 		client, err := api.GenClient()
@@ -43,9 +53,11 @@ var pulseCmd = &cobra.Command{
 		}
 
 		err = api.CreatePulse(api.Pulse{
-			Summary:   summary,
-			Labels:    labels,
-			StartedAt: start,
+			Summary:        summary,
+			Labels:         labels,
+			EnvironmentIds: environments,
+			ServiceIds:     services,
+			StartedAt:      start,
 		}, client, secProvider)
 		if err.Error != nil {
 			log.Fatal(err)
@@ -59,4 +71,6 @@ func init() {
 	// Flags
 	inputs.AddKeyFlag(pulseCmd)
 	inputs.AddPulseLabelsFlag(pulseCmd)
+	inputs.AddPulseServicesFlag(pulseCmd)
+	inputs.AddPulseEnvironmentsFlag(pulseCmd)
 }

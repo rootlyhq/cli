@@ -4,10 +4,14 @@ package inputs
 type ConfigPiece string
 
 const (
-	// Name for the summary name related to pulses
+	// Name for the summary config related to pulses
 	PulseSummaryName ConfigPiece = "summary"
-	// Name for the labels name related to pulses
+	// Name for the label config related to pulses
 	PulseLabelsName ConfigPiece = "label"
-	// Name for the API key
+	// Name for the service config related to pulses
+	PulseServicesName ConfigPiece = "service"
+	// Name for the environments config related to pulses
+	PulseEnvironmentsName ConfigPiece = "environment"
+	// Name for the API key config
 	ApiKeyName ConfigPiece = "api-key"
 )

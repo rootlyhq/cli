@@ -32,7 +32,34 @@ func GetString(name ConfigPiece, cmd *cobra.Command, required bool) (string, log
 	return val, log.CtxErr{}
 }
 
-// Get an array with a simple key value map configuration value
+// Get a sting based array configuration value
+func GetStringArray(
+	name ConfigPiece,
+	cmd *cobra.Command,
+	required bool,
+) ([]string, log.CtxErr) {
+	// Getting the value from a command line flag if possible
+	val, err := flags.GetStringArray(string(name), cmd)
+	if err.Error != nil {
+		return []string{}, err
+	}
+	if len(val) != 0 {
+		return val, err
+	}
+
+	// No value from flag so falling back on possible env var
+	val, err = env.GetStringArray(string(name))
+	if err.Error != nil {
+		return []string{}, err
+	}
+	if len(val) == 0 && required {
+		return []string{}, errIfNoVal(name)
+	}
+
+	return val, log.CtxErr{}
+}
+
+// Get a simple key value map based array configuration value
 func GetStringSimpleMapArray(
 	name ConfigPiece,
 	cmd *cobra.Command,

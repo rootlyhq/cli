@@ -1,6 +1,11 @@
 package inputs
 
-import "github.com/spf13/cobra"
+import (
+	"fmt"
+	"strings"
+
+	"github.com/spf13/cobra"
+)
 
 // Add a flag for the API key
 func AddKeyFlag(cmd *cobra.Command) {
@@ -11,22 +16,54 @@ func AddKeyFlag(cmd *cobra.Command) {
 	)
 }
 
-// Add a flag for a summary
+// Add a flag for a pulse summary
 func AddPulseSummaryFlag(cmd *cobra.Command) {
 	cmd.Flags().StringP(
 		string(PulseSummaryName),
 		"p",
 		"",
-		"The summary of the command being ran",
+		"Summary of the pulse",
 	)
 }
 
-// Add a flag for labels
+// Consistent message telling the user how to use array string flags
+func arrayUsage(name string) string {
+	return fmt.Sprintf(
+		"%v associated with the pulse. Give a new flag for each %v and separate the key from the value with an equals sign.",
+		strings.ToTitle(name),
+		name,
+	)
+}
+
+// Add a flag for pulse labels
 func AddPulseLabelsFlag(cmd *cobra.Command) {
+	name := string(PulseLabelsName)
 	cmd.Flags().StringArrayP(
-		string(PulseLabelsName),
+		name,
 		"l",
 		[]string{},
-		"Labels associated with the command. Give a new flag for each label and separate the key from the value with an equals sign.",
+		arrayUsage(name),
+	)
+}
+
+// Add a flag for pulse services
+func AddPulseServicesFlag(cmd *cobra.Command) {
+	name := string(PulseServicesName)
+	cmd.Flags().StringArrayP(
+		name,
+		"s",
+		[]string{},
+		arrayUsage(name),
+	)
+}
+
+// Add a flag for pulse services
+func AddPulseEnvironmentsFlag(cmd *cobra.Command) {
+	name := string(PulseEnvironmentsName)
+	cmd.Flags().StringArrayP(
+		name,
+		"e",
+		[]string{},
+		arrayUsage(name),
 	)
 }
