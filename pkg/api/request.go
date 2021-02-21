@@ -31,7 +31,7 @@ func CreatePulse(
 	)
 	if err != nil {
 		return log.CtxErr{
-			Context: "Failed to create pulse",
+			Context: "Failed to create pulse" + "\n\n" + data,
 			Error:   err,
 		}
 	}
@@ -40,7 +40,7 @@ func CreatePulse(
 	err = secProvider.Intercept(req.Context(), req)
 	if err != nil {
 		return log.CtxErr{
-			Context: "Failed to intercept request to inject auth header",
+			Context: "Failed to intercept request to inject auth header" + "\n\n" + data,
 			Error:   err,
 		}
 	}
@@ -49,13 +49,13 @@ func CreatePulse(
 	resp, err := client.Client.Do(req)
 	if err != nil {
 		return log.CtxErr{
-			Context: "Failed to make request to create pulse",
+			Context: "Failed to make request to create pulse" + "\n\n" + data,
 			Error:   err,
 		}
 	}
 
 	if resp.StatusCode != http.StatusCreated {
-		return log.NewErr("Failed to create pulse with exit code " + resp.Status)
+		return log.NewErr("Failed to create pulse with exit code " + resp.Status + "\n\n" + data)
 	}
 
 	log.Success("Created pulse with summary of", pulse.Summary)

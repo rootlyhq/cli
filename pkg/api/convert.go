@@ -28,11 +28,21 @@ func convertPulse(pulse Pulse) (string, log.CtxErr) {
 	// Putting rootly.Pulse inside apiData
 	var finalData apiData
 	finalData.Data.Type = "pulses"
-	finalData.Data.Attributes = rootly.Pulse{
-		Summary:   &pulse.Summary,
-		CreatedAt: convertTime(pulse.CreatedAt),
-		UpdatedAt: convertTime(pulse.UpdatedAt),
-		Labels:    &labels,
+
+	// We must conditionally add labels because the rootly library uses pointers
+	if len(labels) == 0 {
+		finalData.Data.Attributes = rootly.Pulse{
+			Summary:   &pulse.Summary,
+			CreatedAt: convertTime(pulse.CreatedAt),
+			UpdatedAt: convertTime(pulse.UpdatedAt),
+		}
+	} else {
+		finalData.Data.Attributes = rootly.Pulse{
+			Summary:   &pulse.Summary,
+			CreatedAt: convertTime(pulse.CreatedAt),
+			UpdatedAt: convertTime(pulse.UpdatedAt),
+			Labels:    &labels,
+		}
 	}
 
 	// Marshaling the data
