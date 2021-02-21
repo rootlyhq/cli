@@ -16,4 +16,4 @@ RUN make build
 
 # hadolint ignore=DL3006,DL3007
 FROM alpine:latest
-COPY --from=builder /usr/src/app/bin/rootly .
+COPY --from=builder /usr/src/app/bin/rootly /usr/local/bin/rootly
