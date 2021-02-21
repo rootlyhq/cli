@@ -10,6 +10,9 @@ import (
 
 // Run a given program
 func RunProgram(program string, args []string) (int, log.CtxErr) {
+	fmtCommand := program + " " + strings.Join(args, " ")
+	log.Info("Running", fmtCommand)
+
 	// Making sure that the program exists
 	progPath, err := exec.LookPath(program)
 	if err != nil {
@@ -29,10 +32,11 @@ func RunProgram(program string, args []string) (int, log.CtxErr) {
 		exitErr, ok := err.(*exec.ExitError)
 		if ok {
 			exitCode := exitErr.ExitCode()
-			log.Warning(program, strings.Join(args, " "), "failed with exit code of", exitCode)
+			log.Warning(fmtCommand, "failed with exit code of", exitCode)
 			return exitErr.ExitCode(), log.CtxErr{}
 		}
 	}
 
+	log.Success("Ran", fmtCommand, "with an exit code of 0")
 	return 0, log.CtxErr{}
 }

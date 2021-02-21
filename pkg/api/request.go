@@ -6,16 +6,18 @@ import (
 
 	"github.com/deepmap/oapi-codegen/pkg/securityprovider"
 	"github.com/rootly-io/cli/pkg/log"
+	"github.com/rootly-io/cli/pkg/models"
 	"github.com/rootly-io/rootly-go"
 )
 
 // Create a pulse on rootly.io
 func CreatePulse(
-	pulse Pulse,
+	pulse models.Pulse,
 	client *rootly.Client,
 	secProvider *securityprovider.SecurityProviderBearerToken,
 ) log.CtxErr {
-	log.Info("Creating pulse with summary of", pulse.Summary)
+	fmtPulse := log.FormatPulse(pulse)
+	log.Info("Creating pulse with the following values:", fmtPulse)
 
 	// Converting the data
 	data, errCtx := convertPulse(pulse)
@@ -58,6 +60,6 @@ func CreatePulse(
 		return log.NewErr("Failed to create pulse with exit code " + resp.Status + "\n\n" + data)
 	}
 
-	log.Success("Created pulse with summary of", pulse.Summary)
+	log.Success("Created a pulse with the following values:", fmtPulse)
 	return log.CtxErr{}
 }

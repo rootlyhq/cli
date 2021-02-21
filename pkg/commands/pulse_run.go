@@ -9,6 +9,7 @@ import (
 	"github.com/rootly-io/cli/pkg/commands/pulserun"
 	"github.com/rootly-io/cli/pkg/inputs"
 	"github.com/rootly-io/cli/pkg/log"
+	"github.com/rootly-io/cli/pkg/models"
 	"github.com/spf13/cobra"
 )
 
@@ -18,7 +19,7 @@ var pulseRunCmd = &cobra.Command{
 	Example: "rootly pulse-run --api-key \"ABC123\" --summary \"Deploy Website\" --label=\"Stage=Prod\" sh deploy.sh",
 	Run: func(cmd *cobra.Command, args []string) {
 		start := time.Now().UTC()
-		log.Info("Getting inputs")
+		log.Info("Getting pulse inputs")
 
 		var (
 			prog     = args[0]
@@ -53,7 +54,13 @@ var pulseRunCmd = &cobra.Command{
 			log.Fatal(err)
 		}
 
-		log.Success("Got inputs")
+		log.Success("Got inputs", log.FormatPulse(models.Pulse{
+			Summary:        summary,
+			Labels:         labels,
+			EnvironmentIds: environments,
+			ServiceIds:     services,
+			StartedAt:      start,
+		}))
 
 		client, err := api.GenClient()
 		if err.Error != nil {
@@ -73,18 +80,13 @@ var pulseRunCmd = &cobra.Command{
 			labels,
 			map[string]string{"key": "Exit Status", "value": fmt.Sprint(exitCode)},
 		)
-
-		err = api.CreatePulse(
-			api.Pulse{
-				Summary:        summary,
-				Labels:         labels,
-				EnvironmentIds: environments,
-				ServiceIds:     services,
-				StartedAt:      start,
-			},
-			client,
-			secProvider,
-		)
+		err = api.CreatePulse(models.Pulse{
+			Summary:        summary,
+			Labels:         labels,
+			EnvironmentIds: environments,
+			ServiceIds:     services,
+			StartedAt:      start,
+		}, client, secProvider)
 		if err.Error != nil {
 			log.Fatal(err)
 		}

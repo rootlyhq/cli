@@ -4,11 +4,12 @@ import (
 	"encoding/json"
 
 	"github.com/rootly-io/cli/pkg/log"
+	"github.com/rootly-io/cli/pkg/models"
 	"github.com/rootly-io/rootly-go"
 )
 
 // Convert a Pulse to a json version of rootly.NewPulse
-func convertPulse(pulse Pulse) (string, log.CtxErr) {
+func convertPulse(pulse models.Pulse) (string, log.CtxErr) {
 	// Converting Pulse.Labels to rootly.NewPulse.Lables
 	labels := []struct {
 		Key   string `json:"key"`

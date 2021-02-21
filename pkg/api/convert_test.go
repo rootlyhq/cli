@@ -4,21 +4,22 @@ import (
 	"testing"
 	"time"
 
+	"github.com/rootly-io/cli/pkg/models"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestConvertPulse(t *testing.T) {
 
 	tt := []struct {
-		pulse    Pulse
+		pulse    models.Pulse
 		expected string
 	}{
 		{
-			pulse:    Pulse{Summary: "Hello World!"},
+			pulse:    models.Pulse{Summary: "Hello World!"},
 			expected: "{\"data\":{\"attributes\":{\"ended_at\":null,\"environment_ids\":null,\"service_ids\":null,\"started_at\":null,\"summary\":\"Hello World!\"},\"type\":\"pulses\"}}",
 		},
 		{
-			pulse: Pulse{
+			pulse: models.Pulse{
 				Summary: "Hello World!",
 				Labels: []map[string]string{
 					{
@@ -30,7 +31,7 @@ func TestConvertPulse(t *testing.T) {
 			expected: "{\"data\":{\"attributes\":{\"ended_at\":null,\"environment_ids\":null,\"labels\":[{\"key\":\"Name\",\"value\":\"Harry Potter\"}],\"service_ids\":null,\"started_at\":null,\"summary\":\"Hello World!\"},\"type\":\"pulses\"}}",
 		},
 		{
-			pulse: Pulse{
+			pulse: models.Pulse{
 				Summary: "Hello World!",
 				Labels: []map[string]string{
 					{
@@ -43,7 +44,7 @@ func TestConvertPulse(t *testing.T) {
 			expected: "{\"data\":{\"attributes\":{\"ended_at\":null,\"environment_ids\":null,\"labels\":[{\"key\":\"Name\",\"value\":\"Harry Potter\"}],\"service_ids\":null,\"started_at\":\"2001-01-01T01:01:01.000000001Z\",\"summary\":\"Hello World!\"},\"type\":\"pulses\"}}",
 		},
 		{
-			pulse: Pulse{
+			pulse: models.Pulse{
 				Summary: "Hello World!",
 				Labels: []map[string]string{
 					{
@@ -57,7 +58,7 @@ func TestConvertPulse(t *testing.T) {
 			expected: "{\"data\":{\"attributes\":{\"ended_at\":\"2001-01-01T01:01:01.000000001Z\",\"environment_ids\":null,\"labels\":[{\"key\":\"Name\",\"value\":\"Harry Potter\"}],\"service_ids\":null,\"started_at\":\"2001-01-01T01:01:01.000000001Z\",\"summary\":\"Hello World!\"},\"type\":\"pulses\"}}",
 		},
 		{
-			pulse: Pulse{
+			pulse: models.Pulse{
 				Summary: "Hello World!",
 				Labels: []map[string]string{
 					{
