@@ -7,7 +7,7 @@ require (
 	github.com/deepmap/oapi-codegen v1.5.1
 	github.com/go-openapi/swag v0.19.14 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
-	github.com/rootly-io/rootly-go v0.0.0-20210221012846-99be4dd55c80
+	github.com/rootly-io/rootly-go v0.0.0-20210221025839-d03b4e1111a1
 	github.com/spf13/cobra v1.1.3
 	github.com/stretchr/testify v1.7.0
 	golang.org/x/crypto v0.0.0-20210220033148-5ea612d1eb83 // indirect

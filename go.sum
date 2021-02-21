@@ -188,6 +188,8 @@ github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af/go.mod h1:XWv6So
 github.com/rogpeppe/go-internal v1.3.0/go.mod h1:M8bDsm7K2OlrFYOpmOWEs/qY81heoFRclV5y23lUDJ4=
 github.com/rootly-io/rootly-go v0.0.0-20210221012846-99be4dd55c80 h1:W+Kki2cVNasA/bG0gd4+ASAJlbUTE9c/cLIzDvTTpMg=
 github.com/rootly-io/rootly-go v0.0.0-20210221012846-99be4dd55c80/go.mod h1:1jwRmZK1Bu+6jVGwKd9VWevFR1x6B6ICH0GDl2vTwEg=
+github.com/rootly-io/rootly-go v0.0.0-20210221025839-d03b4e1111a1 h1:fdIB+0KpPml8Di535hj1OAFoFRnmCgdOgiIqUKqTlk8=
+github.com/rootly-io/rootly-go v0.0.0-20210221025839-d03b4e1111a1/go.mod h1:1jwRmZK1Bu+6jVGwKd9VWevFR1x6B6ICH0GDl2vTwEg=
 github.com/russross/blackfriday/v2 v2.0.1/go.mod h1:+Rmxgy9KzJVeS9/2gXHxylqXiyQDYRxCVz55jmeOWTM=
 github.com/ryanuber/columnize v0.0.0-20160712163229-9b3edd62028f/go.mod h1:sm1tb6uqfes/u+d4ooFouqFdy9/2g9QGwK3SQygK0Ts=
 github.com/sean-/seed v0.0.0-20170313163322-e2103e2c3529/go.mod h1:DxrIzT+xaE7yg65j358z/aeFdxmN0P9QXhEzd20vsDc=
