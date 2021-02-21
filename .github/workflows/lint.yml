@@ -32,3 +32,13 @@ jobs:
         uses: brpaz/hadolint-action@master
         with:
           dockerfile: 'docker/Dockerfile'
+  goreleaser:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Run Check
+        uses: goreleaser/goreleaser-action@v2
+        with:
+          version: latest
+          args: check
