@@ -3,6 +3,7 @@ package commands
 import (
 	"fmt"
 	"strings"
+	"time"
 
 	"github.com/rootly-io/cli/pkg/api"
 	"github.com/rootly-io/cli/pkg/commands/pulserun"
@@ -16,6 +17,7 @@ var pulseRunCmd = &cobra.Command{
 	Short:   "Run a terminal command and send a pulse with the exit code",
 	Example: "rootly pulse-run --api-key \"ABC123\" --summary \"Deploy Website\" --label=\"Stage=Prod\" sh deploy.sh",
 	Run: func(cmd *cobra.Command, args []string) {
+		start := time.Now().UTC()
 		log.Info("Getting inputs")
 
 		var (
@@ -63,7 +65,11 @@ var pulseRunCmd = &cobra.Command{
 		)
 
 		err = api.CreatePulse(
-			api.Pulse{Summary: summary, Labels: labels},
+			api.Pulse{
+				Summary:   summary,
+				Labels:    labels,
+				StartedAt: start,
+			},
 			client,
 			secProvider,
 		)

@@ -2,6 +2,7 @@ package commands
 
 import (
 	"strings"
+	"time"
 
 	"github.com/rootly-io/cli/pkg/api"
 	"github.com/rootly-io/cli/pkg/inputs"
@@ -14,6 +15,7 @@ var pulseCmd = &cobra.Command{
 	Short:   "Send a pulse",
 	Example: "rootly pulse --api-key \"ABC123\" --label \"Version=3\" --label \"Deployed By=Harry Potter\" Deployed Site",
 	Run: func(cmd *cobra.Command, args []string) {
+		start := time.Now().UTC()
 		log.Info("Getting inputs")
 
 		apiKey, err := inputs.GetString(inputs.ApiKeyName, cmd, true)
@@ -40,7 +42,11 @@ var pulseCmd = &cobra.Command{
 			log.Fatal(err)
 		}
 
-		err = api.CreatePulse(api.Pulse{Summary: summary, Labels: labels}, client, secProvider)
+		err = api.CreatePulse(api.Pulse{
+			Summary:   summary,
+			Labels:    labels,
+			StartedAt: start,
+		}, client, secProvider)
 		if err.Error != nil {
 			log.Fatal(err)
 		}
