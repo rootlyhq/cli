@@ -14,7 +14,7 @@ import (
 var pulseRunCmd = &cobra.Command{
 	Use:     "pulse-run",
 	Short:   "Run a terminal command and send a pulse with the exit code",
-	Example: "rootly pulse-run --api-key=\"ABC123\" --summary=\"Deploy Website\" --label=\"Stage|#|Prod\" sh deploy.sh",
+	Example: "rootly pulse-run --api-key \"ABC123\" --summary \"Deploy Website\" --label=\"Stage=Prod\" sh deploy.sh",
 	Run: func(cmd *cobra.Command, args []string) {
 		log.Info("Getting inputs")
 

@@ -11,7 +11,7 @@ func convertToSimpleMapArray(array []string) []map[string]string {
 	var finalVals []map[string]string
 
 	for _, val := range array {
-		twoVals := strings.Split(val, "|#|")
+		twoVals := strings.Split(val, "=")
 
 		if len(twoVals) >= 3 {
 			log.Warning(twoVals[0], "has more than one correspoding value. It will be ignored")
