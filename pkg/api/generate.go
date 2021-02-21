@@ -3,7 +3,7 @@ package api
 import (
 	"github.com/deepmap/oapi-codegen/pkg/securityprovider"
 	"github.com/rootly-io/cli/pkg/log"
-	"github.com/rootly-io/rootly.go"
+	"github.com/rootly-io/rootly-go"
 )
 
 const serverName = "https://api.rootly.io"

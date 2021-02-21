@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/rootly-io/cli/pkg/log"
-	"github.com/rootly-io/rootly.go"
+	"github.com/rootly-io/rootly-go"
 )
 
 // Convert a Pulse to a rootly.Pulse
