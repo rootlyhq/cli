@@ -1,5 +1,5 @@
 build:
-	go build -tags netgo -a -v -o ./bin/rootly ./cmd/rootly
+	go build -tags netgo -a -v -o ./bin/rootly .
 
 docker-build:
 	docker build -t rootly/cli .
