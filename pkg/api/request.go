@@ -60,7 +60,7 @@ func CreatePulse(
 	}
 
 	// Handeling a failed request
-	if resp.StatusCode != http.StatusOK {
+	if resp.StatusCode != http.StatusCreated {
 		body, err := ioutil.ReadAll(resp.Body)
 		if err != nil {
 			return log.CtxErr{
