@@ -3,7 +3,7 @@ package env
 import (
 	"os"
 
-	"github.com/rootly-io/cli/pkg/log"
+	"github.com/rootly-io/cli/pkg/inputs/parse"
 )
 
 // Get the value of a string env var
@@ -13,8 +13,7 @@ func GetString(name string) string {
 }
 
 // Get the value of a string array env var
-func GetStringArray(name string) ([]string, log.CtxErr) {
-	val := os.Getenv(convertName(name))
-	values, err := parseArray(val)
-	return values, err
+func GetArray(name string) []string {
+	str := os.Getenv(convertName(name))
+	return parse.Array(str)
 }

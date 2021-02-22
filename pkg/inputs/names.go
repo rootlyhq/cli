@@ -7,11 +7,11 @@ const (
 	// Name for the summary config related to pulses
 	PulseSummaryName ConfigPiece = "summary"
 	// Name for the label config related to pulses
-	PulseLabelsName ConfigPiece = "label"
+	PulseLabelsName ConfigPiece = "labels"
 	// Name for the service config related to pulses
-	PulseServicesName ConfigPiece = "service"
+	PulseServicesName ConfigPiece = "services"
 	// Name for the environments config related to pulses
-	PulseEnvironmentsName ConfigPiece = "environment"
+	PulseEnvironmentsName ConfigPiece = "environments"
 	// Name for the API key config
 	ApiKeyName ConfigPiece = "api-key"
 )

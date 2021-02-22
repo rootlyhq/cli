@@ -1,6 +1,7 @@
 package flags
 
 import (
+	"github.com/rootly-io/cli/pkg/inputs/parse"
 	"github.com/rootly-io/cli/pkg/log"
 	"github.com/spf13/cobra"
 )
@@ -22,11 +23,11 @@ func GetString(name string, cmd *cobra.Command) (string, log.CtxErr) {
 	return val, log.CtxErr{}
 }
 
-// Get the value of a string array flag
-func GetStringArray(name string, cmd *cobra.Command) ([]string, log.CtxErr) {
-	val, err := cmd.Flags().GetStringArray(name)
+// Get the value of an array flag
+func GetArray(name string, cmd *cobra.Command) ([]string, log.CtxErr) {
+	str, err := cmd.Flags().GetString(name)
 	if err != nil {
 		return []string{}, failedToGetErr(name, err)
 	}
-	return val, log.CtxErr{}
+	return parse.Array(str), log.CtxErr{}
 }

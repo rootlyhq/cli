@@ -38,10 +38,10 @@ func arrayUsage(name string) string {
 // Add a flag for pulse labels
 func AddPulseLabelsFlag(cmd *cobra.Command) {
 	name := string(PulseLabelsName)
-	cmd.Flags().StringArrayP(
+	cmd.Flags().StringP(
 		name,
 		"l",
-		[]string{},
+		"",
 		arrayUsage(name),
 	)
 }
@@ -49,10 +49,10 @@ func AddPulseLabelsFlag(cmd *cobra.Command) {
 // Add a flag for pulse services
 func AddPulseServicesFlag(cmd *cobra.Command) {
 	name := string(PulseServicesName)
-	cmd.Flags().StringArrayP(
+	cmd.Flags().StringP(
 		name,
 		"s",
-		[]string{},
+		"",
 		arrayUsage(name),
 	)
 }
@@ -60,10 +60,10 @@ func AddPulseServicesFlag(cmd *cobra.Command) {
 // Add a flag for pulse services
 func AddPulseEnvironmentsFlag(cmd *cobra.Command) {
 	name := string(PulseEnvironmentsName)
-	cmd.Flags().StringArrayP(
+	cmd.Flags().StringP(
 		name,
 		"e",
-		[]string{},
+		"",
 		arrayUsage(name),
 	)
 }

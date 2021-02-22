@@ -44,12 +44,12 @@ var pulseRunCmd = &cobra.Command{
 			log.Fatal(err)
 		}
 
-		environments, err := inputs.GetStringArray(inputs.PulseEnvironmentsName, cmd, false)
+		environments, err := inputs.GetArray(inputs.PulseEnvironmentsName, cmd, false)
 		if err.Error != nil {
 			log.Fatal(err)
 		}
 
-		services, err := inputs.GetStringArray(inputs.PulseServicesName, cmd, false)
+		services, err := inputs.GetArray(inputs.PulseServicesName, cmd, false)
 		if err.Error != nil {
 			log.Fatal(err)
 		}

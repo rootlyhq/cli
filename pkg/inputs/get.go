@@ -3,6 +3,7 @@ package inputs
 import (
 	"github.com/rootly-io/cli/pkg/inputs/env"
 	"github.com/rootly-io/cli/pkg/inputs/flags"
+	"github.com/rootly-io/cli/pkg/inputs/parse"
 	"github.com/rootly-io/cli/pkg/log"
 	"github.com/spf13/cobra"
 )
@@ -33,30 +34,27 @@ func GetString(name ConfigPiece, cmd *cobra.Command, required bool) (string, log
 }
 
 // Get a sting based array configuration value
-func GetStringArray(
+func GetArray(
 	name ConfigPiece,
 	cmd *cobra.Command,
 	required bool,
 ) ([]string, log.CtxErr) {
 	// Getting the value from a command line flag if possible
-	val, err := flags.GetStringArray(string(name), cmd)
+	vals, err := flags.GetArray(string(name), cmd)
 	if err.Error != nil {
 		return []string{}, err
 	}
-	if len(val) != 0 {
-		return val, err
+	if len(vals) != 0 {
+		return vals, err
 	}
 
 	// No value from flag so falling back on possible env var
-	val, err = env.GetStringArray(string(name))
-	if err.Error != nil {
-		return []string{}, err
-	}
-	if len(val) == 0 && required {
+	vals = env.GetArray(string(name))
+	if len(vals) == 0 && required {
 		return []string{}, errIfNoVal(name)
 	}
 
-	return val, log.CtxErr{}
+	return vals, log.CtxErr{}
 }
 
 // Get a simple key value map based array configuration value
@@ -66,22 +64,21 @@ func GetStringSimpleMapArray(
 	required bool,
 ) ([]map[string]string, log.CtxErr) {
 	// Getting the value from a command line flag if possible
-	val, err := flags.GetStringArray(string(name), cmd)
+	str, err := flags.GetString(string(name), cmd)
 	if err.Error != nil {
 		return []map[string]string{}, err
 	}
-	if len(val) != 0 {
-		return convertToSimpleMapArray(val), err
+
+	vals := parse.Array(str)
+	if len(vals) != 0 {
+		return convertToSimpleMapArray(vals), err
 	}
 
 	// No value from flag so falling back on possible env var
-	val, err = env.GetStringArray(string(name))
-	if err.Error != nil {
-		return []map[string]string{}, err
-	}
-	if len(val) == 0 && required {
+	vals = env.GetArray(string(name))
+	if len(vals) == 0 && required {
 		return []map[string]string{}, errIfNoVal(name)
 	}
 
-	return convertToSimpleMapArray(val), log.CtxErr{}
+	return convertToSimpleMapArray(vals), log.CtxErr{}
 }
