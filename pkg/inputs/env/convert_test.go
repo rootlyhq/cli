@@ -1,6 +1,8 @@
 package env
 
 import (
+	"os"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -30,6 +32,19 @@ func TestConvertName(t *testing.T) {
 	}
 
 	for _, test := range tt {
+		envActionName := "ROOTLY_CLI_GH_ACTION"
 		assert.Equal(t, test.expected, convertName(test.flag))
+
+		err := os.Setenv(envActionName, "true")
+		assert.NoError(t, err)
+
+		assert.Equal(
+			t,
+			strings.Replace(test.expected, "ROOTLY_CLI", "INPUT", 1),
+			convertName(test.flag),
+		)
+
+		err = os.Setenv(envActionName, "")
+		assert.NoError(t, err)
 	}
 }
