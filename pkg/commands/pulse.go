@@ -1,11 +1,13 @@
 package commands
 
 import (
+	"os"
 	"strings"
 	"time"
 
 	"github.com/rootly-io/cli/pkg/api"
 	"github.com/rootly-io/cli/pkg/inputs"
+	"github.com/rootly-io/cli/pkg/inputs/env"
 	"github.com/rootly-io/cli/pkg/log"
 	"github.com/rootly-io/cli/pkg/models"
 	"github.com/spf13/cobra"
@@ -25,6 +27,12 @@ var pulseCmd = &cobra.Command{
 		}
 
 		summary := strings.Join(args, " ")
+		if summary == "" {
+			summary = os.Getenv(env.GetPrefix() + "SUMMARY")
+			if summary == "" {
+				log.Fatal(log.NewErr("No summary provided"))
+			}
+		}
 
 		labels, err := inputs.GetStringSimpleMapArray(inputs.PulseLabelsName, cmd, false)
 		if err.Error != nil {

@@ -5,11 +5,16 @@ import (
 	"strings"
 )
 
+// Get the environmet variable prefix
+func GetPrefix() string {
+	defaultPrefix := "ROOTLY_CLI_"
+	if os.Getenv(defaultPrefix+"GH_ACTION") == "true" {
+		return "INPUT_"
+	}
+	return defaultPrefix
+}
+
 // Convert a flag name to an environment variable name
 func convertName(flagName string) string {
-	prefix := "ROOTLY_CLI_"
-	if os.Getenv(prefix+"GH_ACTION") == "true" {
-		prefix = "INPUT_"
-	}
-	return prefix + strings.ReplaceAll(strings.ToUpper(flagName), "-", "_")
+	return GetPrefix() + strings.ReplaceAll(strings.ToUpper(flagName), "-", "_")
 }
