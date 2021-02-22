@@ -34,6 +34,3 @@ dockers:
   - dockerfile: docker/Dockerfile
     image_templates:
       - 'rootlyhub/cli:latest'
-      - 'rootlyhub/cli:{{ .Tag }}'
-      - 'rootlyhub/cli:{{ .Tag }}-{{ .Env.GO_VERSION }}'
-      - 'rootlyhub/cli:v{{ .Major }}'
