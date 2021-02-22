@@ -1,7 +1,7 @@
 release:
   github:
     owner: rootly-io
-    name: cli
+    name: rootly
   prerelease: auto
 before:
   hooks:
