@@ -8,8 +8,11 @@ LABEL description="Command-line tool for rootly"
 COPY . /usr/src/app
 WORKDIR /usr/src/app
 
+RUN ls -la
+RUN pwd
+
 # Installing dependencies
-RUN go get -v -t -d ./...
+RUN go get -v -t -d all
 
 # Build the binary
 RUN make build

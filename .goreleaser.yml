@@ -31,7 +31,7 @@ brews:
     install: bin.install "rootly"
 
 dockers:
-  - dockerfile: docker/Dockerfile
+  - dockerfile: Dockerfile
     image_templates:
       - 'rootlyhub/cli:latest'
       - 'rootlyhub/cli:{{ .Tag }}'
