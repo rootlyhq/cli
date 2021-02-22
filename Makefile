@@ -1,8 +1,11 @@
 build:
-	go build -tags netgo -a -v -o ./bin/rootly .
+	go build -tags netgo -a -v -o ./bin/rootly ./cmd/rootly/
 
 docker-build:
-	docker build -t rootly/cli .
+	docker build -t rootlyhub/cli .
+
+docker-push:
+	docker push rootlyhub/cli
 
 clean:
 	rm -r ./bin
