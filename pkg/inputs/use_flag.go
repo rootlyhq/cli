@@ -12,7 +12,7 @@ func AddKeyFlag(cmd *cobra.Command) {
 	cmd.Flags().String(
 		string(ApiKeyName),
 		"",
-		"api key generated from rootly.io. See https://rootly.io/api#section/How-to-generate-an-API-Key for more info",
+		"api key generated from rootly.io. See https://rootly.io/api#section/How-to-generate-an-API-Key for more info.",
 	)
 }
 
@@ -30,7 +30,7 @@ func AddPulseSummaryFlag(cmd *cobra.Command) {
 func arrayUsage(name string) string {
 	return fmt.Sprintf(
 		"%v associated with the pulse. Give a new flag for each %v and separate the key from the value with an equals sign.",
-		strings.ToTitle(name),
+		strings.Title(name),
 		name,
 	)
 }
