@@ -58,58 +58,17 @@ func CreatePulse(
 			Error:   err,
 		}
 	}
+	req.Body.Close()
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return log.CtxErr{
+			Context: "Failed to read response from failed request",
+			Error:   err,
+		}
+	}
 
 	// Handeling a failed request
 	if resp.StatusCode != http.StatusCreated {
-		body, err := ioutil.ReadAll(resp.Body)
-		if err != nil {
-			return log.CtxErr{
-				Context: "Failed to read response from failed request",
-				Error:   err,
-			}
-		}
-
-		if resp.StatusCode == http.StatusCreated {
-			// Getting json data to see if serviceids or environmentids failed
-			possibleErr := "The given environments or services don't exist in rootly."
-
-			var jsonResp rootly.NewPulse
-			err = json.Unmarshal(body, &jsonResp)
-			if err != nil {
-				return log.CtxErr{
-					Context: "Failed to parse json from failed request response. " + possibleErr,
-					Error:   err,
-				}
-			}
-
-			// If there is an invalid service id
-			if jsonResp.Data.Attributes.ServiceIds == nil && len(pulse.ServiceIds) != 0 {
-				if len(pulse.ServiceIds) == 1 {
-					return log.NewErr(pulse.ServiceIds[0] + " is not a valid service.")
-				}
-				return log.NewErr(
-					"Please check your list of services. One is not valid: " + strings.Join(
-						pulse.ServiceIds,
-						", ",
-					),
-				)
-			}
-
-			// If there is an invalid environment id
-			if jsonResp.Data.Attributes.EnvironmentIds == nil &&
-				len(pulse.EnvironmentIds) != 0 {
-				if len(pulse.EnvironmentIds) == 1 {
-					return log.NewErr(pulse.EnvironmentIds[0] + " is not a valid environment.")
-				}
-				return log.NewErr(
-					"Please check your list of environments. One is not valid: " + strings.Join(
-						pulse.EnvironmentIds,
-						", ",
-					),
-				)
-			}
-		}
-
 		return log.NewErr(
 			fmt.Sprintf(
 				"Failed to create pulse with exit code %v\n\nPayload:\n%v\n\nResponse:\n%v",
@@ -120,6 +79,64 @@ func CreatePulse(
 		)
 	}
 
+	// Getting json data to see if serviceids or environmentids failed
+	possibleErr := "The given environments or services don't exist in rootly."
+	var jsonResp models.CreatedPulseResponse
+	err = json.Unmarshal(body, &jsonResp)
+	if err != nil {
+		return log.CtxErr{
+			Context: "Failed to parse json from failed request response. " + possibleErr,
+			Error:   err,
+		}
+	}
+
+	// If there is an invalid service id
+	services := jsonResp.Data.Attributes.Services
+	if len(services) != len(pulse.ServiceIds) {
+		okServices := []string{}
+		for _, service := range services {
+			okServices = append(okServices, service.Name)
+		}
+		return log.NewErr(
+			"The following services are invalid: " + strings.Join(
+				arrayMissing(pulse.ServiceIds, okServices),
+				", ",
+			),
+		)
+	}
+
+	// If there is an invalid environment id
+	environments := jsonResp.Data.Attributes.Environments
+	if len(environments) != len(pulse.EnvironmentIds) {
+		okEnvironments := []string{}
+		for _, environment := range environments {
+			okEnvironments = append(okEnvironments, environment.Name)
+		}
+		return log.NewErr(
+			"The following environments are invalid: " + strings.Join(
+				arrayMissing(pulse.EnvironmentIds, okEnvironments),
+				", ",
+			),
+		)
+	}
+
 	log.Success("Created a pulse with the following values:", fmtPulse)
 	return log.CtxErr{}
+}
+
+// Get a list of all expected items that aren't in a given array
+func arrayMissing(expected []string, array []string) []string {
+	missing := []string{}
+	for _, expectedItem := range expected {
+		found := false
+		for _, item := range array {
+			if item == expectedItem {
+				found = true
+			}
+		}
+		if !found {
+			missing = append(missing, expectedItem)
+		}
+	}
+	return missing
 }
