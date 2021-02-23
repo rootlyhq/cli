@@ -4,6 +4,7 @@ go 1.15
 
 require (
 	github.com/Matt-Gleich/lumber v1.1.1
+	github.com/Matt-Gleich/release v0.0.0-20210118171406-869be6eb2b61
 	github.com/deepmap/oapi-codegen v1.5.1
 	github.com/go-openapi/swag v0.19.14 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect

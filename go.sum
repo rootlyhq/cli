@@ -15,6 +15,8 @@ github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03
 github.com/BurntSushi/xgb v0.0.0-20160522181843-27f122750802/go.mod h1:IVnqGOEym/WlBOVXweHU+Q+/VP0lqqI8lqeDx9IjBqo=
 github.com/Matt-Gleich/lumber v1.1.1 h1:ebIAA13wpJYxYdNzqMCTh1x+lewkq+K5eB2yE4qUPrI=
 github.com/Matt-Gleich/lumber v1.1.1/go.mod h1:cfUbhW8jUjOlSAWArUxYwqmkzi0PFmvgeIsoK1rvS/Y=
+github.com/Matt-Gleich/release v0.0.0-20210118171406-869be6eb2b61 h1:4FO24sHaiXFJvvbN7DOdxsHGw3+YdsA2ANhOJMwNkok=
+github.com/Matt-Gleich/release v0.0.0-20210118171406-869be6eb2b61/go.mod h1:bXuZW6gUZgF3PlxKD/PWBXsnvAPnrScC+scuBEGOUUw=
 github.com/OneOfOne/xxhash v1.2.2/go.mod h1:HSdplMjZKSmBqAxg5vPj2TmRDmfkzw+cTzAElWljhcU=
 github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc/go.mod h1:LOuyumcjzFXgccqObfd/Ljyb9UuFJ6TxHnclSeseNhc=
 github.com/alecthomas/units v0.0.0-20151022065526-2efee857e7cf/go.mod h1:ybxpYRFXyAe+OPACYpWeL0wqObRcbAqCMya13uyzqw0=
