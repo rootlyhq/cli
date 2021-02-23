@@ -103,7 +103,7 @@ func init() {
 
 	// Flags
 	inputs.AddKeyFlag(pulseRunCmd)
-	inputs.AddHostFlag(pulseCmd)
+	inputs.AddHostFlag(pulseRunCmd)
 	inputs.AddPulseLabelsFlag(pulseRunCmd)
 	inputs.AddPulseSummaryFlag(pulseRunCmd)
 	inputs.AddPulseServicesFlag(pulseRunCmd)

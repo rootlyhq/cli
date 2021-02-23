@@ -73,7 +73,7 @@ var pulseCmd = &cobra.Command{
 			log.Fatal(err)
 		}
 
-		err = api.CreatePulse(apiKey, pulse, client, secProvider)
+		err = api.CreatePulse(apiHost, pulse, client, secProvider)
 		if err.Error != nil {
 			log.Fatal(err)
 		}
