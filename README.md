@@ -61,6 +61,8 @@ You can grab the binary from the [latest release](https://github.com/rootly-io/c
 | labels        | Key value pair labels (separated with commas with no spaces around `=`) | `--labels "version=2, attempt=1"`       | No           | ROOTLY_LABELS            |
 | services      | Services associated with the pulse (separated with commas)              | `--services "elasticsearch-prod"`       | No           | ROOTLY_SERVICES          |
 | environments  | Environments associated with the pulse (separated with commas)          | `--environments "staging, production"`  | No           | ROOTLY_ENVIRONMENTS      |
+| debug         | If extra logs should be outputted for debugging                         | `--debug`                               | No           | ROOTLY_DEBUG             |
+| silent        | If all logs should be suppressed                                        | `--silent`                              | No           | ROOTLY_SILENT            |
 
 Here are some examples:
 
@@ -92,6 +94,8 @@ Here are some examples:
 | labels        | Key value pair labels (separated with commas with no spaces around `=`) | `--labels "Version=2, Attempt=1"`       | No           | ROOTLY_LABELS            |
 | services      | Services associated with the pulse (separated with commas)              | `--services "elasticsearch-prod"`       | No           | ROOTLY_SERVICES          |
 | environments  | Environments associated with the pulse (separated with commas)          | `--environments "staging, production"`  | No           | ROOTLY_ENVIRONMENTS      |
+| debug         | If extra logs should be outputted for debugging                         | `--debug`                               | No           | ROOTLY_DEBUG             |
+| silent        | If all logs should be suppressed (command will still output)            | `--silent`                              | No           | ROOTLY_SILENT            |
 
 Here are some examples:
 
