@@ -75,6 +75,7 @@ var pulseCmd = &cobra.Command{
 			EnvironmentIds: environments,
 			ServiceIds:     services,
 			StartedAt:      start,
+			EndedAt:        time.Now(),
 		}
 		log.Success(false, "Got pulse inputs", log.FormatPulse(pulse))
 

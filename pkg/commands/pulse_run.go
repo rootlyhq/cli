@@ -80,6 +80,7 @@ var pulseRunCmd = &cobra.Command{
 			EnvironmentIds: environments,
 			ServiceIds:     services,
 			StartedAt:      start,
+			EndedAt:        time.Now(),
 		}))
 
 		client, err := api.GenClient(apiHost)
