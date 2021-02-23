@@ -188,8 +188,6 @@ github.com/prometheus/procfs v0.0.0-20190507164030-5867b95ac084/go.mod h1:TjEm7z
 github.com/prometheus/tsdb v0.7.1/go.mod h1:qhTCs0VvXwvX/y3TZrWD7rabWM+ijKTux40TwIPHuXU=
 github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af/go.mod h1:XWv6SoW27p1b0cqNHllgS5HIMJraePCO15w5zCzIWYg=
 github.com/rogpeppe/go-internal v1.3.0/go.mod h1:M8bDsm7K2OlrFYOpmOWEs/qY81heoFRclV5y23lUDJ4=
-github.com/rootly-io/rootly-go v0.0.0-20210221025839-d03b4e1111a1 h1:fdIB+0KpPml8Di535hj1OAFoFRnmCgdOgiIqUKqTlk8=
-github.com/rootly-io/rootly-go v0.0.0-20210221025839-d03b4e1111a1/go.mod h1:1jwRmZK1Bu+6jVGwKd9VWevFR1x6B6ICH0GDl2vTwEg=
 github.com/rootly-io/rootly-go v0.0.0-20210223045157-b1b8569d6e69 h1:8ZgP0b4VBm92tI32XYDysdrJWQq4ZPuR3+RnWPZ6xSc=
 github.com/rootly-io/rootly-go v0.0.0-20210223045157-b1b8569d6e69/go.mod h1:1jwRmZK1Bu+6jVGwKd9VWevFR1x6B6ICH0GDl2vTwEg=
 github.com/russross/blackfriday/v2 v2.0.1/go.mod h1:+Rmxgy9KzJVeS9/2gXHxylqXiyQDYRxCVz55jmeOWTM=
@@ -283,8 +281,6 @@ golang.org/x/net v0.0.0-20190620200207-3b0461eec859/go.mod h1:z5CRVTTTmAJ677TzLL
 golang.org/x/net v0.0.0-20200822124328-c89045814202/go.mod h1:/O7V0waA8r7cgGh81Ro3o1hOxt32SMVPicZroKQ2sZA=
 golang.org/x/net v0.0.0-20210119194325-5f4716e94777 h1:003p0dJM77cxMSyCPFphvZf/Y5/NXf5fzg6ufd1/Oew=
 golang.org/x/net v0.0.0-20210119194325-5f4716e94777/go.mod h1:m0MpNAwzfU5UDzcl9v0D8zg8gWTRqZa9RBIspLL5mdg=
-golang.org/x/net v0.0.0-20210220033124-5f55cee0dc0d h1:1aflnvSoWWLI2k/dMUAl5lvU1YO4Mb4hz0gh+1rjcxU=
-golang.org/x/net v0.0.0-20210220033124-5f55cee0dc0d/go.mod h1:m0MpNAwzfU5UDzcl9v0D8zg8gWTRqZa9RBIspLL5mdg=
 golang.org/x/net v0.0.0-20210222171744-9060382bd457 h1:hMm9lBjyNLe/c9C6bElQxp4wsrleaJn1vXMZIQkNN44=
 golang.org/x/net v0.0.0-20210222171744-9060382bd457/go.mod h1:m0MpNAwzfU5UDzcl9v0D8zg8gWTRqZa9RBIspLL5mdg=
 golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be/go.mod h1:N/0e6XlmueqKjAGxoOufVs8QHGRruUQn6yWY3a++T0U=
