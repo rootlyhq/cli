@@ -15,6 +15,7 @@ import (
 
 // Create a pulse on rootly.io
 func CreatePulse(
+	host string,
 	pulse models.Pulse,
 	client *rootly.Client,
 	secProvider *securityprovider.SecurityProviderBearerToken,
@@ -30,7 +31,7 @@ func CreatePulse(
 
 	// Creating request
 	req, err := rootly.NewCreatePulseRequestWithBody(
-		serverName,
+		host,
 		"application/vnd.api+json",
 		strings.NewReader(data),
 	)

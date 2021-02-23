@@ -26,6 +26,11 @@ var pulseCmd = &cobra.Command{
 			log.Fatal(err)
 		}
 
+		apiHost, err := inputs.GetString(inputs.ApiHostName, cmd, true)
+		if err.Error != nil {
+			log.Fatal(err)
+		}
+
 		summary := strings.Join(args, " ")
 		if summary == "" {
 			summary = os.Getenv(env.GetPrefix() + "SUMMARY")
@@ -58,7 +63,7 @@ var pulseCmd = &cobra.Command{
 		}
 		log.Success("Got pulse inputs", log.FormatPulse(pulse))
 
-		client, err := api.GenClient()
+		client, err := api.GenClient(apiHost)
 		if err.Error != nil {
 			log.Fatal(err)
 		}
@@ -68,7 +73,7 @@ var pulseCmd = &cobra.Command{
 			log.Fatal(err)
 		}
 
-		err = api.CreatePulse(pulse, client, secProvider)
+		err = api.CreatePulse(apiKey, pulse, client, secProvider)
 		if err.Error != nil {
 			log.Fatal(err)
 		}
@@ -80,6 +85,7 @@ func init() {
 
 	// Flags
 	inputs.AddKeyFlag(pulseCmd)
+	inputs.AddHostFlag(pulseCmd)
 	inputs.AddPulseLabelsFlag(pulseCmd)
 	inputs.AddPulseServicesFlag(pulseCmd)
 	inputs.AddPulseEnvironmentsFlag(pulseCmd)

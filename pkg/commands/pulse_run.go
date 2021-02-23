@@ -31,6 +31,11 @@ var pulseRunCmd = &cobra.Command{
 			log.Fatal(err)
 		}
 
+		apiHost, err := inputs.GetString(inputs.ApiHostName, cmd, true)
+		if err.Error != nil {
+			log.Fatal(err)
+		}
+
 		summary, err := inputs.GetString(inputs.PulseSummaryName, cmd, false)
 		if err.Error != nil {
 			log.Fatal(err)
@@ -62,7 +67,7 @@ var pulseRunCmd = &cobra.Command{
 			StartedAt:      start,
 		}))
 
-		client, err := api.GenClient()
+		client, err := api.GenClient(apiHost)
 		if err.Error != nil {
 			log.Fatal(err)
 		}
@@ -80,7 +85,7 @@ var pulseRunCmd = &cobra.Command{
 			labels,
 			map[string]string{"key": "Exit Status", "value": fmt.Sprint(exitCode)},
 		)
-		err = api.CreatePulse(models.Pulse{
+		err = api.CreatePulse(apiHost, models.Pulse{
 			Summary:        summary,
 			Labels:         labels,
 			EnvironmentIds: environments,
@@ -98,6 +103,7 @@ func init() {
 
 	// Flags
 	inputs.AddKeyFlag(pulseRunCmd)
+	inputs.AddHostFlag(pulseCmd)
 	inputs.AddPulseLabelsFlag(pulseRunCmd)
 	inputs.AddPulseSummaryFlag(pulseRunCmd)
 	inputs.AddPulseServicesFlag(pulseRunCmd)

@@ -14,4 +14,6 @@ const (
 	PulseEnvironmentsName ConfigPiece = "environments"
 	// Name for the API key config
 	ApiKeyName ConfigPiece = "api-key"
+	// Name for the API host config
+	ApiHostName ConfigPiece = "api-host"
 )

@@ -6,11 +6,9 @@ import (
 	"github.com/rootly-io/rootly-go"
 )
 
-const serverName = "https://api.rootly.io"
-
 // Generate a rootly client
-func GenClient() (*rootly.Client, log.CtxErr) {
-	client, err := rootly.NewClient(serverName)
+func GenClient(host string) (*rootly.Client, log.CtxErr) {
+	client, err := rootly.NewClient(host)
 	if err != nil {
 		return &rootly.Client{}, log.CtxErr{
 			Context: "Failed to create rootly client",
