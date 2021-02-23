@@ -20,28 +20,28 @@ func TestConvertToSimpleMapArray(t *testing.T) {
 	}{
 		{
 			array:    []string{fmt.Sprintf("Exit Code%v2", delimiter)},
-			expected: []map[string]string{{keyName: "Exit Code", valName: "2"}},
+			expected: []map[string]string{{keyName: "exit_code", valName: "2"}},
 		},
 		{
 			array: []string{
 				fmt.Sprintf("Exit Code%v2", delimiter),
 				fmt.Sprintf("Exit Code%v", delimiter),
 			},
-			expected: []map[string]string{{keyName: "Exit Code", valName: "2"}},
+			expected: []map[string]string{{keyName: "exit_code", valName: "2"}},
 		},
 		{
 			array: []string{
 				fmt.Sprintf("Exit Code%v2", delimiter),
 				fmt.Sprintf("Name%v", delimiter),
 			},
-			expected: []map[string]string{{keyName: "Exit Code", valName: "2"}},
+			expected: []map[string]string{{keyName: "exit_code", valName: "2"}},
 		},
 		{
 			array: []string{
 				fmt.Sprintf("Exit Code%v2", delimiter),
 				fmt.Sprintf("Name%vHarry%vPotter", delimiter, delimiter),
 			},
-			expected: []map[string]string{{keyName: "Exit Code", valName: "2"}},
+			expected: []map[string]string{{keyName: "exit_code", valName: "2"}},
 		},
 		{
 			array: []string{
@@ -49,8 +49,8 @@ func TestConvertToSimpleMapArray(t *testing.T) {
 				fmt.Sprintf("Name%vHarry Potter", delimiter),
 			},
 			expected: []map[string]string{
-				{keyName: "Exit Code", valName: "2"},
-				{keyName: "Name", valName: "Harry Potter"},
+				{keyName: "exit_code", valName: "2"},
+				{keyName: "name", valName: "Harry Potter"},
 			},
 		},
 	}

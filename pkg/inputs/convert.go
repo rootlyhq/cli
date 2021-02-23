@@ -22,7 +22,13 @@ func convertToSimpleMapArray(array []string) []map[string]string {
 			continue
 		}
 
-		finalVals = append(finalVals, map[string]string{"key": twoVals[0], "value": twoVals[1]})
+		finalVals = append(
+			finalVals,
+			map[string]string{
+				"key":   strings.ReplaceAll(strings.ToLower(twoVals[0]), " ", "_"),
+				"value": twoVals[1],
+			},
+		)
 	}
 
 	return finalVals
