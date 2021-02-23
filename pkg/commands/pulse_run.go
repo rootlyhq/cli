@@ -80,7 +80,7 @@ var pulseRunCmd = &cobra.Command{
 			EnvironmentIds: environments,
 			ServiceIds:     services,
 			StartedAt:      start,
-			EndedAt:        time.Now(),
+			EndedAt:        time.Now().UTC(),
 		}))
 
 		client, err := api.GenClient(apiHost)
@@ -107,6 +107,7 @@ var pulseRunCmd = &cobra.Command{
 			EnvironmentIds: environments,
 			ServiceIds:     services,
 			StartedAt:      start,
+			EndedAt:        time.Now().UTC(),
 		}, client, secProvider)
 		if err.Error != nil {
 			log.Fatal(err)

@@ -31,11 +31,13 @@ func FormatPulse(pulse models.Pulse) string {
 
   Summary:      %v
   Started At:   %v
+  Ended At      %v
   Services:     %v
   Environments: %v
   Labels:       %v`,
 		emptyReplace(pulse.Summary),
 		emptyReplace(pulse.StartedAt.Format(time.RFC822)),
+		emptyReplace(pulse.EndedAt.Format(time.RFC822)),
 		emptyReplace(strings.Join(pulse.ServiceIds, delimiter)),
 		emptyReplace(strings.Join(pulse.EnvironmentIds, delimiter)),
 		emptyReplace(fmtLabels),
