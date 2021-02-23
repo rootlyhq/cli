@@ -17,9 +17,8 @@ func AddKey(cmd *cobra.Command) {
 
 // Add a flag for the API host
 func AddHost(cmd *cobra.Command) {
-	cmd.Flags().StringP(
+	cmd.Flags().String(
 		string(names.ApiHostName),
-		"h",
 		"https://api.rootly.io",
 		"Host URL for the rootly api.",
 	)
