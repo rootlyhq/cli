@@ -46,11 +46,11 @@ func TestConvertToSimpleMapArray(t *testing.T) {
 		{
 			array: []string{
 				fmt.Sprintf("Exit Code%v2", delimiter),
-				fmt.Sprintf("Name%vHarry Potter", delimiter),
+				fmt.Sprintf("Platform%vOSX", delimiter),
 			},
 			expected: []map[string]string{
 				{keyName: "exit_code", valName: "2"},
-				{keyName: "name", valName: "Harry Potter"},
+				{keyName: "platform", valName: "osx"},
 			},
 		},
 	}
