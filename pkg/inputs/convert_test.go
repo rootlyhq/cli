@@ -50,7 +50,7 @@ func TestConvertToSimpleMapArray(t *testing.T) {
 			},
 			expected: []map[string]string{
 				{keyName: "exit_code", valName: "2"},
-				{keyName: "platform", valName: "osx"},
+				{keyName: "platform", valName: "OSX"},
 			},
 		},
 	}
