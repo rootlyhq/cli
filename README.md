@@ -54,12 +54,12 @@ You can grab the binary from the [latest release](https://github.com/rootly-io/c
 
 `rootly pulse` allows you to send a [pulse](https://rootly.io/docs/pulses) right from the command-line. The summary for the pulse, which is required, goes at the end of the command as a normal argument.
 
-| **Flag Name** | **Description**                                                         | **Examples**                           | **Required** |
-| ------------- | ----------------------------------------------------------------------- | -------------------------------------- | ------------ |
-| api-key       | A rootly api key                                                        | `--api-key "ABC123"`                   | Yes          |
-| labels        | Key value pair labels (separated with commas with no spaces around `=`) | `--labels "Version=2, Attempt=1"`      | No           |
-| services      | Services associated with the pulse (separated with commas)              | `--services "elasticsearch-prod"`      | No           |
-| environments  | Environments associated with the pulse (separated with commas)          | `--environments "staging, production"` | No           |
+| **Flag Name** | **Description**                                                         | **Examples**                           | **Required** | **Environment Variable** |
+| ------------- | ----------------------------------------------------------------------- | -------------------------------------- | ------------ | ------------------------ |
+| api-key       | A rootly api key                                                        | `--api-key "ABC123"`                   | Yes          | ROOTLY_API_KEY           |
+| labels        | Key value pair labels (separated with commas with no spaces around `=`) | `--labels "version=2, attempt=1"`      | No           | ROOTLY_LABELS            |
+| services      | Services associated with the pulse (separated with commas)              | `--services "elasticsearch-prod"`      | No           | ROOTLY_SERVICES          |
+| environments  | Environments associated with the pulse (separated with commas)          | `--environments "staging, production"` | No           | ROOTLY_ENVIRONMENTS      |
 
 Here are some examples:
 
@@ -83,13 +83,13 @@ Here are some examples:
 
 `rootly pulse-run` allows you to wrap a terminal command and send a [pulse](https://rootly.io/docs/pulses) with a label of the exit code. The summary for the pulse is a flag and if no value is provided it will use the command. The command goes at the end of the command as a normal argument.
 
-| **Flag Name** | **Description**                                                         | **Examples**                           | **Required** |
-| ------------- | ----------------------------------------------------------------------- | -------------------------------------- | ------------ |
-| api-key       | A rootly api key                                                        | `--api-key "ABC123"`                   | Yes          |
-| summary       | Summary for the pulse. Default is just the command                      | `--summary "Deployed Website"`         | No           |
-| labels        | Key value pair labels (separated with commas with no spaces around `=`) | `--labels "Version=2, Attempt=1"`      | No           |
-| services      | Services associated with the pulse (separated with commas)              | `--services "elasticsearch-prod"`      | No           |
-| environments  | Environments associated with the pulse (separated with commas)          | `--environments "staging, production"` | No           |
+| **Flag Name** | **Description**                                                         | **Examples**                           | **Required** | **Environment Variable** |
+| ------------- | ----------------------------------------------------------------------- | -------------------------------------- | ------------ | ------------------------ |
+| api-key       | A rootly api key                                                        | `--api-key "ABC123"`                   | Yes          | ROOTLY_API_KEY           |
+| summary       | Summary for the pulse. Default is just the command                      | `--summary "Deployed Website"`         | No           | ROOTLY_SUMMARY           |
+| labels        | Key value pair labels (separated with commas with no spaces around `=`) | `--labels "Version=2, Attempt=1"`      | No           | ROOTLY_LABELS            |
+| services      | Services associated with the pulse (separated with commas)              | `--services "elasticsearch-prod"`      | No           | ROOTLY_SERVICES          |
+| environments  | Environments associated with the pulse (separated with commas)          | `--environments "staging, production"` | No           | ROOTLY_ENVIRONMENTS      |
 
 Here are some examples:
 
@@ -105,7 +105,7 @@ Here are some examples:
   - Services: elasticsearch-staging and elasticsearch-prod
   - Environments: staging and production
   - Command: `echo Hello World`
-- `rootly pulse --api-key ABC123 --environments "production" --labels "Version=2, Attempt=1" --summary "Deploy Website" sh deploy.sh`
+- `rootly pulse --api-key ABC123 --environments "production" --labels "version=2, attempt=1" --summary "Deploy Website" sh deploy.sh`
   - Summary: sh deploy.sh
   - Labels: Version: 2, Attempt: 1, and Exit Code: 1
   - Services: None
@@ -114,6 +114,6 @@ Here are some examples:
 
 ## 📦 Running in CI
 
-When using the rootly CLI in a CI environment there are some useful features to make the process easier. Every single flag can use a environment variable instead. The `api-key` flag for example could use the environment variable `ROOTLY_CLI_API_KEY` instead. To get the environment variable for a certain flag just replace all hyphens (`-`) with underscores (`_`), make all letters uppercase, and add `ROOTLY_CLI_` to the front.
+When using the rootly CLI in a CI environment there are some useful features to make the process easier. Every single flag can use an environment variable instead. The `api-key` flag for example could use the environment variable `ROOTLY_API_KEY` instead. To get the environment variable for a certain flag just replace all hyphens (`-`) with underscores (`_`), make all letters uppercase, and add `ROOTLY_` to the front.
 
-There is also a GitHub action for `rootly pulse` that makes it really easy to use in a GitHub actions environment. See the [rootly-io/pulse-action](https://github.com/rootly-io/pulse-action) repository for more information.
+There is also a GitHub action for `rootly pulse` that makes it easy to use in a GitHub actions environment. See the [rootly-io/pulse-action](https://github.com/rootly-io/pulse-action) repository for more information.
