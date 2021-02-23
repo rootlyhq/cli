@@ -4,7 +4,7 @@ import "github.com/Matt-Gleich/lumber"
 
 var (
 	// If no logs should be outputted
-	Silent = false
+	Quiet = false
 	// If all logs should be outputted
 	Debug = false
 )
@@ -32,7 +32,7 @@ func Info(ctx ...interface{}) {
 // the lumber module but exists for easy switching to other
 // log formats
 func Success(forceOut bool, ctx ...interface{}) {
-	if (forceOut || Debug) && !Silent {
+	if (forceOut || Debug) && !Quiet {
 		lumber.Success(ctx...)
 	}
 }

@@ -17,8 +17,9 @@ func AddPulseSummary(cmd *cobra.Command) {
 // Add a flag for pulse labels
 func AddPulseLabels(cmd *cobra.Command) {
 	name := string(names.PulseLabelsName)
-	cmd.Flags().String(
+	cmd.Flags().StringP(
 		name,
+		"l",
 		"",
 		arrayUsage(name)+" Key-value pair seperated with equal sign (=)",
 	)
@@ -27,8 +28,9 @@ func AddPulseLabels(cmd *cobra.Command) {
 // Add a flag for pulse services
 func AddPulseServices(cmd *cobra.Command) {
 	name := string(names.PulseServicesName)
-	cmd.Flags().String(
+	cmd.Flags().StringP(
 		name,
+		"s",
 		"",
 		arrayUsage(name),
 	)
@@ -37,8 +39,9 @@ func AddPulseServices(cmd *cobra.Command) {
 // Add a flag for pulse services
 func AddPulseEnvironments(cmd *cobra.Command) {
 	name := string(names.PulseEnvironmentsName)
-	cmd.Flags().String(
+	cmd.Flags().StringP(
 		name,
+		"e",
 		"",
 		arrayUsage(name),
 	)

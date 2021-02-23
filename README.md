@@ -62,7 +62,7 @@ You can grab the binary from the [latest release](https://github.com/rootly-io/c
 | services      | Services associated with the pulse (separated with commas)              | `--services "elasticsearch-prod"`       | No           | ROOTLY_SERVICES          |
 | environments  | Environments associated with the pulse (separated with commas)          | `--environments "staging, production"`  | No           | ROOTLY_ENVIRONMENTS      |
 | debug         | If extra logs should be outputted for debugging                         | `--debug`                               | No           | ROOTLY_DEBUG             |
-| silent        | If all logs should be suppressed                                        | `--silent`                              | No           | ROOTLY_SILENT            |
+| quiet         | If all logs should be suppressed                                        | `--quiet`                               | No           | ROOTLY_QUIET             |
 
 Here are some examples:
 
@@ -95,7 +95,7 @@ Here are some examples:
 | services      | Services associated with the pulse (separated with commas)              | `--services "elasticsearch-prod"`       | No           | ROOTLY_SERVICES          |
 | environments  | Environments associated with the pulse (separated with commas)          | `--environments "staging, production"`  | No           | ROOTLY_ENVIRONMENTS      |
 | debug         | If extra logs should be outputted for debugging                         | `--debug`                               | No           | ROOTLY_DEBUG             |
-| silent        | If all logs should be suppressed (command will still output)            | `--silent`                              | No           | ROOTLY_SILENT            |
+| quiet         | If all logs should be suppressed (command will still output)            | `--quiet`                               | No           | ROOTLY_QUIET             |
 
 Here are some examples:
 

@@ -22,11 +22,11 @@ var pulseCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		start := time.Now().UTC()
 
-		silent, err := inputs.GetBool(names.OutputSilentName, cmd)
+		quiet, err := inputs.GetBool(names.OutputQuietName, cmd)
 		if err.Error != nil {
 			log.Fatal(err)
 		}
-		log.Silent = silent
+		log.Quiet = quiet
 
 		debug, err := inputs.GetBool(names.OutputDebugName, cmd)
 		if err.Error != nil {
@@ -105,5 +105,5 @@ func init() {
 	flags.AddPulseServices(pulseCmd)
 	flags.AddPulseEnvironments(pulseCmd)
 	flags.AddOutputDebug(pulseCmd)
-	flags.AddOutputSilent(pulseCmd)
+	flags.AddOutputQuiet(pulseCmd)
 }
