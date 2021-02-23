@@ -4,16 +4,16 @@ import (
 	"os"
 
 	"github.com/rootly-io/cli/pkg/inputs/parse"
+	"github.com/rootly-io/cli/pkg/models"
 )
 
 // Get the value of a string env var
-func GetString(name string) string {
-	val := os.Getenv(convertName(name))
-	return val
+func GetString(name models.ConfigPiece) string {
+	return os.Getenv(convertName(string(name)))
 }
 
 // Get the value of a string array env var
-func GetArray(name string) []string {
-	str := os.Getenv(convertName(name))
+func GetArray(name models.ConfigPiece) []string {
+	str := os.Getenv(convertName(string(name)))
 	return parse.Array(str)
 }

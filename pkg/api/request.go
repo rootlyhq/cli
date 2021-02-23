@@ -121,7 +121,7 @@ func CreatePulse(
 		)
 	}
 
-	log.Success("Created a pulse with the following values:", fmtPulse)
+	log.Success(true, "Created a pulse with the following values:", fmtPulse)
 	return log.CtxErr{}
 }
 

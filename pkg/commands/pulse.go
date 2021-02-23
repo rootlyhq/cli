@@ -8,6 +8,8 @@ import (
 	"github.com/rootly-io/cli/pkg/api"
 	"github.com/rootly-io/cli/pkg/inputs"
 	"github.com/rootly-io/cli/pkg/inputs/env"
+	"github.com/rootly-io/cli/pkg/inputs/flags"
+	"github.com/rootly-io/cli/pkg/inputs/names"
 	"github.com/rootly-io/cli/pkg/log"
 	"github.com/rootly-io/cli/pkg/models"
 	"github.com/spf13/cobra"
@@ -19,14 +21,27 @@ var pulseCmd = &cobra.Command{
 	Example: "rootly pulse --api-key \"ABC123\" --label \"platform=osx, version=1.12\" Deployed Site",
 	Run: func(cmd *cobra.Command, args []string) {
 		start := time.Now().UTC()
+
+		silent, err := inputs.GetBool(names.OutputSilentName, cmd)
+		if err.Error != nil {
+			log.Fatal(err)
+		}
+		log.Silent = silent
+
+		debug, err := inputs.GetBool(names.OutputDebugName, cmd)
+		if err.Error != nil {
+			log.Fatal(err)
+		}
+		log.Debug = debug
+
 		log.Info("Getting pulse inputs")
 
-		apiKey, err := inputs.GetString(inputs.ApiKeyName, cmd, true)
+		apiKey, err := inputs.GetString(names.ApiKeyName, cmd, true)
 		if err.Error != nil {
 			log.Fatal(err)
 		}
 
-		apiHost, err := inputs.GetString(inputs.ApiHostName, cmd, true)
+		apiHost, err := inputs.GetString(names.ApiHostName, cmd, true)
 		if err.Error != nil {
 			log.Fatal(err)
 		}
@@ -39,17 +54,17 @@ var pulseCmd = &cobra.Command{
 			}
 		}
 
-		labels, err := inputs.GetStringSimpleMapArray(inputs.PulseLabelsName, cmd, false)
+		labels, err := inputs.GetStringSimpleMapArray(names.PulseLabelsName, cmd, false)
 		if err.Error != nil {
 			log.Fatal(err)
 		}
 
-		environments, err := inputs.GetArray(inputs.PulseEnvironmentsName, cmd, false)
+		environments, err := inputs.GetArray(names.PulseEnvironmentsName, cmd, false)
 		if err.Error != nil {
 			log.Fatal(err)
 		}
 
-		services, err := inputs.GetArray(inputs.PulseServicesName, cmd, false)
+		services, err := inputs.GetArray(names.PulseServicesName, cmd, false)
 		if err.Error != nil {
 			log.Fatal(err)
 		}
@@ -61,7 +76,7 @@ var pulseCmd = &cobra.Command{
 			ServiceIds:     services,
 			StartedAt:      start,
 		}
-		log.Success("Got pulse inputs", log.FormatPulse(pulse))
+		log.Success(false, "Got pulse inputs", log.FormatPulse(pulse))
 
 		client, err := api.GenClient(apiHost)
 		if err.Error != nil {
@@ -84,9 +99,11 @@ func init() {
 	rootCmd.AddCommand(pulseCmd)
 
 	// Flags
-	inputs.AddKeyFlag(pulseCmd)
-	inputs.AddHostFlag(pulseCmd)
-	inputs.AddPulseLabelsFlag(pulseCmd)
-	inputs.AddPulseServicesFlag(pulseCmd)
-	inputs.AddPulseEnvironmentsFlag(pulseCmd)
+	flags.AddKey(pulseCmd)
+	flags.AddHost(pulseCmd)
+	flags.AddPulseLabels(pulseCmd)
+	flags.AddPulseServices(pulseCmd)
+	flags.AddPulseEnvironments(pulseCmd)
+	flags.AddOutputDebug(pulseCmd)
+	flags.AddOutputSilent(pulseCmd)
 }

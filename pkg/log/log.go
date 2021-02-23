@@ -2,6 +2,13 @@ package log
 
 import "github.com/Matt-Gleich/lumber"
 
+var (
+	// If no logs should be outputted
+	Silent = false
+	// If all logs should be outputted
+	Debug = false
+)
+
 // Log a given error fatally to the console
 // At the moment this function is a simple wrapper around
 // the lumber module but exists for easy switching to other
@@ -15,15 +22,19 @@ func Fatal(err CtxErr) {
 // the lumber module but exists for easy switching to other
 // log formats
 func Info(ctx ...interface{}) {
-	lumber.Info(ctx...)
+	if Debug {
+		lumber.Info(ctx...)
+	}
 }
 
 // Log a success to the console
 // At the moment this function is a simple wrapper around
 // the lumber module but exists for easy switching to other
 // log formats
-func Success(ctx ...interface{}) {
-	lumber.Success(ctx...)
+func Success(forceOut bool, ctx ...interface{}) {
+	if (forceOut || Debug) && !Silent {
+		lumber.Success(ctx...)
+	}
 }
 
 // Log a warning to the console
@@ -31,5 +42,7 @@ func Success(ctx ...interface{}) {
 // the lumber module but exists for easy switching to other
 // log formats
 func Warning(ctx ...interface{}) {
-	lumber.Warning(ctx...)
+	if Debug {
+		lumber.Warning(ctx...)
+	}
 }

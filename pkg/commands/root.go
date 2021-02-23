@@ -3,6 +3,7 @@ package commands
 import (
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/Matt-Gleich/release"
 	"github.com/rootly-io/cli/pkg/log"
@@ -39,7 +40,7 @@ var rootCmd = &cobra.Command{
 			if outdated {
 				log.Warning(fmt.Sprintf("%v of rootly is out! Please upgrade.", v))
 			} else if err == nil {
-				log.Success("You are on the latest version of rootly.")
+				log.Success(false, "You are on the latest version of rootly.")
 			}
 			fmt.Println(version)
 		} else {
@@ -64,6 +65,9 @@ func Execute() {
 	)
 
 	if err := rootCmd.Execute(); err != nil {
+		if strings.HasPrefix(err.Error(), "unknown flag:") {
+			os.Exit(1)
+		}
 		log.Fatal(log.CtxErr{
 			Context: "Failed to execute root command",
 			Error:   err,

@@ -37,6 +37,6 @@ func RunProgram(program string, args []string) (int, log.CtxErr) {
 		}
 	}
 
-	log.Success("Ran", fmtCommand, "with an exit code of 0")
+	log.Success(false, "Ran", fmtCommand, "with an exit code of 0")
 	return 0, log.CtxErr{}
 }
