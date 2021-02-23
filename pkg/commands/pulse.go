@@ -18,7 +18,7 @@ import (
 var pulseCmd = &cobra.Command{
 	Use:     "pulse",
 	Short:   "Send a pulse",
-	Example: "rootly pulse --api-key \"ABC123\" --label \"platform=osx, version=1.12\" Deployed Site",
+	Example: "rootly pulse --api-key \"ABC123\" --labels \"platform=osx, version=1.12\" Deployed Site",
 	Run: func(cmd *cobra.Command, args []string) {
 		start := time.Now().UTC()
 

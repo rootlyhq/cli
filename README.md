@@ -32,7 +32,7 @@
 
 ## 👋 Getting Started
 
-The rootly command-line tool allows you to interact with rootly in your terminal, CI environment, or anything that can run a simple program. At the moment the main purpose of the cli is to send [pulses](https://rootly.io/docs/pulses) right from the command line. This is great for sending a pulse at the end of a deploy script for example. You can also send pulses based off the exit status of a given command to run.
+The rootly command-line tool allows you to interact with rootly in your terminal, CI environment, or anything that can run a simple program. At the moment the main purpose of the cli is to send [pulses](https://rootly.io/docs/pulses) right from the command line. This is great for sending a pulse at the end of a deploy script for example. You can also send pulses based on the exit status of a given command to run.
 
 ### 🚀 Install
 
@@ -57,7 +57,7 @@ You can grab the binary from the [latest release](https://github.com/rootly-io/c
 | **Flag Name** | **Description**                                                         | **Examples**                            | **Required** | **Environment Variable** |
 | ------------- | ----------------------------------------------------------------------- | --------------------------------------- | ------------ | ------------------------ |
 | api-key       | A rootly api key                                                        | `--api-key "ABC123"`                    | Yes          | ROOTLY_API_KEY           |
-| api-host      | Host url for the rootly api. Default is https://api.rootly.io           | `--api-host "https://rootly.hello.com"` | No           | ROOTLY_API_HOST          |
+| api-host      | Host URL for the rootly api. Default is https://api.rootly.io           | `--api-host "https://rootly.hello.com"` | No           | ROOTLY_API_HOST          |
 | labels        | Key value pair labels (separated with commas with no spaces around `=`) | `--labels "version=2, attempt=1"`       | No           | ROOTLY_LABELS            |
 | services      | Services associated with the pulse (separated with commas)              | `--services "elasticsearch-prod"`       | No           | ROOTLY_SERVICES          |
 | environments  | Environments associated with the pulse (separated with commas)          | `--environments "staging, production"`  | No           | ROOTLY_ENVIRONMENTS      |
@@ -66,21 +66,24 @@ You can grab the binary from the [latest release](https://github.com/rootly-io/c
 
 Here are some examples:
 
-- `rootly pulse-run --api-key "ABC123" Hello there`
+- `rootly pulse-run --api-key "ABC123" --quiet Hello there`
   - Summary: Hello there
   - Labels: None
   - Services: None
   - Environments: None
+  - Output: No logs
 - `rootly pulse --api-key "ABC123" --environments "staging, production" --services "elasticsearch-staging, elasticsearch-prod" Hello World!`
   - Summary: Hello World
   - Labels: None
   - Services: elasticsearch-staging and elasticsearch-prod
   - Environments: staging and production
-- `rootly pulse --api-key ABC123 --environments "production" --labels "Version=2, Attempt=1" Is this thing on?`
+  - Output: Silent
+- `rootly pulse --api-key ABC123 --environments "production" --quiet --labels "Version=2, Attempt=1" Is this thing on?`
   - Summary: Is this thing on?
   - Labels: Version: 2 and Attempt: 1
   - Services: None
   - Environments: production
+  - Output: No logs
 
 ### 🏃 `rootly pulse-run`
 
@@ -89,7 +92,7 @@ Here are some examples:
 | **Flag Name** | **Description**                                                         | **Examples**                            | **Required** | **Environment Variable** |
 | ------------- | ----------------------------------------------------------------------- | --------------------------------------- | ------------ | ------------------------ |
 | api-key       | A rootly api key                                                        | `--api-key "ABC123"`                    | Yes          | ROOTLY_API_KEY           |
-| api-host      | Host url for the rootly api. Default is https://api.rootly.io           | `--api-host "https://rootly.hello.com"` | No           | ROOTLY_API_HOST          |
+| api-host      | Host URL for the rootly api. Default is https://api.rootly.io           | `--api-host "https://rootly.hello.com"` | No           | ROOTLY_API_HOST          |
 | summary       | Summary for the pulse. Default is just the command                      | `--summary "Deployed Website"`          | No           | ROOTLY_SUMMARY           |
 | labels        | Key value pair labels (separated with commas with no spaces around `=`) | `--labels "Version=2, Attempt=1"`       | No           | ROOTLY_LABELS            |
 | services      | Services associated with the pulse (separated with commas)              | `--services "elasticsearch-prod"`       | No           | ROOTLY_SERVICES          |
@@ -105,18 +108,21 @@ Here are some examples:
   - Services: None
   - Environments: None
   - Command: `make publish`
-- `rootly pulse-run --api-key "ABC123" --environments "staging, production" --services "elasticsearch-staging, elasticsearch-prod" echo Hello World`
+  - Output: Regular logs
+- `rootly pulse-run --quiet --api-key "ABC123" --environments "staging, production" --services "elasticsearch-staging, elasticsearch-prod" echo Hello World`
   - Summary: echo Hello World
   - Labels: Exit Code: 0
   - Services: elasticsearch-staging and elasticsearch-prod
   - Environments: staging and production
   - Command: `echo Hello World`
+  - Output: No logs
 - `rootly pulse --api-key ABC123 --environments "production" --labels "version=2, attempt=1" --summary "Deploy Website" sh deploy.sh`
   - Summary: sh deploy.sh
   - Labels: Version: 2, Attempt: 1, and Exit Code: 1
   - Services: None
   - Environments: production
   - Command: `sh deploy.sh`
+  - Output: Regular logs
 
 ## 📦 Running in CI
 
