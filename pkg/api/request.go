@@ -3,7 +3,7 @@ package api
 import (
 	"encoding/json"
 	"fmt"
-	"io"
+	"io/ioutil"
 	"net/http"
 	"strings"
 
@@ -60,7 +60,7 @@ func CreatePulse(
 		}
 	}
 	req.Body.Close()
-	body, err := io.ReadAll(resp.Body)
+	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return log.CtxErr{
 			Context: "Failed to read response from failed request",
