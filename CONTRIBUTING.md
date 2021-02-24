@@ -7,8 +7,8 @@ Thank you for having an interest in contributing to the rootly CLI!
   - [Checking your code](#checking-your-code)
     - [Unit-tests](#unit-tests)
     - [Linting](#linting)
-    - [Building](#building)
-    - [Release](#release)
+  - [Building](#building)
+  - [Release](#release)
 
 ## Setting up your environment
 
@@ -39,7 +39,7 @@ Once you have all the programs listed above run the following command:
 make lint
 ```
 
-### Building
+## Building
 
 Build a binary that will go in a folder called bin with the following command:
 
@@ -53,7 +53,7 @@ You can also build the docker image with the following command:
 make docker-build
 ```
 
-### Release
+## Release
 
 You can release a new version of the rootly cli (if you have contributor access) by running the following commands:
 
