@@ -67,7 +67,7 @@ You can grab the binary from the [latest release](https://github.com/rootly-io/c
 
 Here are some examples:
 
-- `rootly pulse-run --api-key "ABC123" --quiet Hello there`
+- `rootly pulse --api-key "ABC123" --quiet Hello there`
   - Summary: Hello there
   - Labels: None
   - Services: None
