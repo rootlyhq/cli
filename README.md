@@ -29,6 +29,7 @@
   - [ℹ️ `rootly pulse`](#ℹ️-rootly-pulse)
   - [🏃 `rootly pulse-run`](#-rootly-pulse-run)
 - [📦 Running in CI](#-running-in-ci)
+- [🤖 GitHub Action](#-github-action)
 
 ## 👋 Getting Started
 
@@ -128,4 +129,27 @@ Here are some examples:
 
 When using the rootly CLI in a CI environment there are some useful features to make the process easier. Every single flag can use an environment variable instead. The `api-key` flag for example could use the environment variable `ROOTLY_API_KEY` instead. To get the environment variable for a certain flag just replace all hyphens (`-`) with underscores (`_`), make all letters uppercase, and add `ROOTLY_` to the front.
 
-There is also a GitHub action for `rootly pulse` that makes it easy to use in a GitHub actions environment. See the [rootly-io/pulse-action](https://github.com/rootly-io/pulse-action) repository for more information.
+## 🤖 GitHub Action
+
+There is also a GitHub action for `rootly pulse` that makes it easy to use in a GitHub actions environment. See the [rootly-io/pulse-action](https://github.com/rootly-io/pulse-action) repository for more information. Here is a short little example:
+
+```yaml
+name: Deploy Website
+
+on: push
+
+jobs:
+  pulse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: make deploy
+      - name: rootly-pulse
+        uses: rootly-io/pulse-action@main
+        with:
+          api_key: ${{ secrets.ROOTLY_API_KEY }}
+          summary: Deploy Website
+          environments: production
+          services: elasticsearch-prod
+          labels: platform=osx,version=2
+```
