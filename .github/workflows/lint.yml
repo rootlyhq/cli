@@ -9,7 +9,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
       - name: Run Golangci Linter
-        uses: golangci/golangci-lint-action@v2.3.0
+        uses: golangci/golangci-lint-action@v2.5.0
   gomod:
     runs-on: ubuntu-latest
     steps:
