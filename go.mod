@@ -1,6 +1,6 @@
 module github.com/rootly-io/cli
 
-go 1.15
+go 1.16
 
 require (
 	github.com/Matt-Gleich/lumber v1.1.1
