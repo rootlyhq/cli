@@ -5,7 +5,7 @@
 
   <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/rootly-io/cli">
   <img alt="GitHub go.mod Go version" src="https://img.shields.io/github/go-mod/go-version/rootly-io/cli">
-  <img alt="Golang report card" src ="https://goreportcard.com/badge/github.com/rootly-io/cli">
+  <img alt="Golang report card" src="https://goreportcard.com/badge/github.com/rootly-io/cli">
   <br>
   <img alt="build" src="https://github.com/rootly-io/cli/workflows/build/badge.svg" />
   <img alt="lint" src="https://github.com/rootly-io/cli/workflows/lint/badge.svg" />
