@@ -117,7 +117,7 @@ Here are some examples:
   - Environments: staging and production
   - Command: `echo Hello World`
   - Output: No logs
-- `rootly pulse --api-key ABC123 --environments "production" --labels "version=2, attempt=1" --summary "Deploy Website" sh deploy.sh`
+- `rootly pulse-run --api-key ABC123 --environments "production" --labels "version=2, attempt=1" --summary "Deploy Website" sh deploy.sh`
   - Summary: sh deploy.sh
   - Labels: Version: 2, Attempt: 1, and Exit Code: 1
   - Services: None
