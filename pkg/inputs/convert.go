@@ -6,7 +6,7 @@ import (
 	"github.com/rootly-io/cli/pkg/log"
 )
 
-// Convert an array to a simple map seperated with |#|
+// Convert an array to a simple map separated with |#|
 func convertToSimpleMapArray(array []string) []map[string]string {
 	var finalVals []map[string]string
 

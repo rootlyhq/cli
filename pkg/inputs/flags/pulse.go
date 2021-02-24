@@ -21,7 +21,7 @@ func AddPulseLabels(cmd *cobra.Command) {
 		name,
 		"l",
 		"",
-		arrayUsage(name)+" Key-value pair seperated with equal sign (=)",
+		arrayUsage(name)+" Key-value pair separated with equal sign (=)",
 	)
 }
 

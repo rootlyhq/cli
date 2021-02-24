@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-// Get the environmet variable prefix
+// Get the environment variable prefix
 func GetPrefix() string {
 	defaultPrefix := "ROOTLY_"
 	if os.Getenv(defaultPrefix+"GH_ACTION") == "true" {
