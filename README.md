@@ -47,7 +47,11 @@ brew install rootly-io/homebrew-tap/rootly
 
 #### 🐧 Linux and 🖥️ Windows
 
-You can grab the binary from the [latest release](https://github.com/rootly-io/cli/releases/latest)
+You can grab the binary from the [latest release](https://github.com/rootly-io/cli/releases/latest) or run the following shell script:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/rootly-io/cli/main/install.sh | sh
+```
 
 ## 📟 Commands
 
