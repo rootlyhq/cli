@@ -74,6 +74,16 @@ var pulseRunCmd = &cobra.Command{
 			log.Fatal(err)
 		}
 
+		source, err := inputs.GetString(names.PulseSourceName, cmd, false)
+		if err.Error != nil {
+			log.Fatal(err)
+		}
+
+		refs, err := inputs.GetStringSimpleMapArray(names.PulseRefsName, cmd, false)
+		if err.Error != nil {
+			log.Fatal(err)
+		}
+
 		log.Success(false, "Got inputs", log.FormatPulse(models.Pulse{
 			Summary:        summary,
 			Labels:         labels,
@@ -81,6 +91,8 @@ var pulseRunCmd = &cobra.Command{
 			ServiceIds:     services,
 			StartedAt:      start,
 			EndedAt:        time.Now().UTC(),
+			Source:         source,
+			Refs:           refs,
 		}))
 
 		client, err := api.GenClient(apiHost)
@@ -108,6 +120,8 @@ var pulseRunCmd = &cobra.Command{
 			ServiceIds:     services,
 			StartedAt:      start,
 			EndedAt:        time.Now().UTC(),
+			Source:         source,
+			Refs:           refs,
 		}, client, secProvider)
 		if err.Error != nil {
 			log.Fatal(err)
@@ -125,6 +139,8 @@ func init() {
 	flags.AddPulseSummary(pulseRunCmd)
 	flags.AddPulseServices(pulseRunCmd)
 	flags.AddPulseEnvironments(pulseRunCmd)
+	flags.AddPulseSource(pulseRunCmd)
+	flags.AddPulseRefs(pulseRunCmd)
 	flags.AddOutputDebug(pulseRunCmd)
 	flags.AddOutputQuiet(pulseRunCmd)
 }

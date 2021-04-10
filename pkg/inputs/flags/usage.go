@@ -12,3 +12,6 @@ func arrayUsage(name string) string {
 		strings.Title(name),
 	)
 }
+
+// Consistent message telling the user how to use map flags
+const mapUsage = "Key-value pair separated with an equal sign (=)"

@@ -10,6 +10,8 @@ type Pulse struct {
 	ServiceIds     []string
 	EnvironmentIds []string
 	Labels         []map[string]string
+	Source         string
+	Refs           []map[string]string
 }
 
 // Structure for a created pulse response

@@ -8,29 +8,36 @@ import (
 	"github.com/rootly-io/rootly-go"
 )
 
-// Convert a Pulse to a json version of rootly.NewPulse
-func convertPulse(pulse models.Pulse) (string, log.CtxErr) {
-	// Converting Pulse.Labels to rootly.NewPulse.Lables
-	labels := []struct {
+// Convert a map to a APIObject
+func convertObject(maps []map[string]string) []struct {
+	Key   string "json:\"key\""
+	Value string "json:\"value\""
+} {
+	objects := []struct {
 		Key   string `json:"key"`
 		Value string `json:"value"`
 	}{}
-	for _, label := range pulse.Labels {
-		labels = append(labels, struct {
+	for _, mapData := range maps {
+		objects = append(objects, struct {
 			Key   string `json:"key"`
 			Value string `json:"value"`
 		}{
-			Key:   label["key"],
-			Value: label["value"],
+			Key:   mapData["key"],
+			Value: mapData["value"],
 		})
 	}
+	return objects
+}
 
+// Convert a Pulse to a json version of rootly.NewPulse
+func convertPulse(pulse models.Pulse) (string, log.CtxErr) {
 	// Putting data into rootly.NewPulse
 	// We need to add optional data conditionally because the
 	// rootly library uses pointers for everything
 	var data rootly.NewPulse
 	data.Data.Type = "pulses"
 	data.Data.Attributes.Summary = pulse.Summary
+	data.Data.Attributes.Source = &pulse.Source
 	if !pulse.EndedAt.IsZero() {
 		data.Data.Attributes.EndedAt = &pulse.EndedAt
 	}
@@ -43,8 +50,13 @@ func convertPulse(pulse models.Pulse) (string, log.CtxErr) {
 	if len(pulse.EnvironmentIds) != 0 {
 		data.Data.Attributes.EnvironmentIds = &pulse.EnvironmentIds
 	}
+	labels := convertObject(pulse.Labels)
 	if len(labels) != 0 {
 		data.Data.Attributes.Labels = &labels
+	}
+	refs := convertObject(pulse.Refs)
+	if len(refs) != 0 {
+		data.Data.Attributes.Refs = &refs
 	}
 
 	// Marshaling the data

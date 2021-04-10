@@ -46,3 +46,24 @@ func AddPulseEnvironments(cmd *cobra.Command) {
 		arrayUsage(name),
 	)
 }
+
+// Add a flag for pulse services
+func AddPulseSource(cmd *cobra.Command) {
+	name := string(names.PulseSourceName)
+	cmd.Flags().String(
+		name,
+		"cli",
+		"Source of the pulse",
+	)
+}
+
+// Add a flag for pulse services
+func AddPulseRefs(cmd *cobra.Command) {
+	name := string(names.PulseRefsName)
+	cmd.Flags().StringP(
+		name,
+		"r",
+		"",
+		arrayUsage(name)+" "+mapUsage,
+	)
+}

@@ -69,6 +69,16 @@ var pulseCmd = &cobra.Command{
 			log.Fatal(err)
 		}
 
+		source, err := inputs.GetString(names.PulseSourceName, cmd, false)
+		if err.Error != nil {
+			log.Fatal(err)
+		}
+
+		refs, err := inputs.GetStringSimpleMapArray(names.PulseRefsName, cmd, false)
+		if err.Error != nil {
+			log.Fatal(err)
+		}
+
 		pulse := models.Pulse{
 			Summary:        summary,
 			Labels:         labels,
@@ -76,6 +86,8 @@ var pulseCmd = &cobra.Command{
 			ServiceIds:     services,
 			StartedAt:      start,
 			EndedAt:        time.Now().UTC(),
+			Source:         source,
+			Refs:           refs,
 		}
 		log.Success(false, "Got pulse inputs", log.FormatPulse(pulse))
 
@@ -105,6 +117,8 @@ func init() {
 	flags.AddPulseLabels(pulseCmd)
 	flags.AddPulseServices(pulseCmd)
 	flags.AddPulseEnvironments(pulseCmd)
+	flags.AddPulseSource(pulseCmd)
+	flags.AddPulseRefs(pulseCmd)
 	flags.AddOutputDebug(pulseCmd)
 	flags.AddOutputQuiet(pulseCmd)
 }

@@ -12,21 +12,6 @@ import (
 func FormatPulse(pulse models.Pulse) string {
 	delimiter := ", "
 
-	// Putting labels in a readable format
-	var fmtLabels string
-	for i, label := range pulse.Labels {
-		prefix := "    "
-		if i == 0 {
-			prefix = "\n    "
-		}
-		fmtLabels = fmtLabels + fmt.Sprintf(
-			"%v%v = %v\n",
-			prefix,
-			label["key"],
-			label["value"],
-		)
-	}
-
 	return strings.TrimSuffix(fmt.Sprintf(`
 
   Summary:      %v
@@ -34,14 +19,36 @@ func FormatPulse(pulse models.Pulse) string {
   Ended At      %v
   Services:     %v
   Environments: %v
-  Labels:       %v`,
+  Labels:       %v
+  Source:       %v
+  Refs:         %v`,
 		emptyReplace(pulse.Summary),
 		emptyReplace(pulse.StartedAt.Format(time.RFC822)),
 		emptyReplace(pulse.EndedAt.Format(time.RFC822)),
 		emptyReplace(strings.Join(pulse.ServiceIds, delimiter)),
 		emptyReplace(strings.Join(pulse.EnvironmentIds, delimiter)),
-		emptyReplace(fmtLabels),
+		emptyReplace(formatMaps(pulse.Labels)),
+		emptyReplace(pulse.Source),
+		emptyReplace(formatMaps(pulse.Refs)),
 	), "\n")
+}
+
+// Format a map
+func formatMaps(maps []map[string]string) string {
+	var fmtMap string
+	for i, mapData := range maps {
+		prefix := "    "
+		if i == 0 {
+			prefix = "\n    "
+		}
+		fmtMap = fmtMap + fmt.Sprintf(
+			"%v%v = %v\n",
+			prefix,
+			mapData["key"],
+			mapData["value"],
+		)
+	}
+	return fmtMap
 }
 
 // Replace empty string values with None
