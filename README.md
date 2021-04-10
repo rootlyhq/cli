@@ -169,7 +169,9 @@ jobs:
         with:
           api_key: ${{ secrets.ROOTLY_API_KEY }}
           summary: Deploy Website
-          environments: production
-          services: elasticsearch-prod
-          labels: platform=k8s,version=2
+          environments: production # Not required
+          services: elasticsearch-prod # Not required
+          labels: platform=ubuntu,version=2 # Not required
+          source: k8s # Not required
+          refs: sha=cd62148cbc5eb42168fe99fdb50a364e12b206ac, image=registry.rootly.io/rootly/my-service:cd6214 # Not required
 ```
