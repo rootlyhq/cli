@@ -78,7 +78,7 @@ Here are some examples:
   - Labels: None
   - Services: None
   - Environments: None
-  - Source: None
+  - Source: cli
   - Refs None
   - Output: No logs
 - `rootly pulse --api-key "ABC123" --environments "staging, production" --services "elasticsearch-staging, elasticsearch-prod" Hello World!`
@@ -86,7 +86,7 @@ Here are some examples:
   - Labels: None
   - Services: elasticsearch-staging and elasticsearch-prod
   - Environments: staging and production
-  - Source: None
+  - Source: cli
   - Refs None
   - Output: Silent
 - `rootly pulse --api-key ABC123 --environments "production" --quiet --labels "Version=2, Attempt=1" --source "k8s" --refs "sha=cd62148cbc5eb42168fe99fdb50a364e12b206ac" Is this thing on?`
@@ -122,7 +122,7 @@ Here are some examples:
   - Labels: Exit Code: 0
   - Services: None
   - Environments: None
-  - Source: None
+  - Source: cli
   - Refs: None
   - Command: `make publish`
   - Output: Regular logs
