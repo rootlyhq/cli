@@ -30,7 +30,7 @@ func convertPulse(pulse models.Pulse) (string, log.CtxErr) {
 	// rootly library uses pointers for everything
 	var data rootly.NewPulse
 	data.Data.Type = "pulses"
-	data.Data.Attributes.Summary = &pulse.Summary
+	data.Data.Attributes.Summary = pulse.Summary
 	if !pulse.EndedAt.IsZero() {
 		data.Data.Attributes.EndedAt = &pulse.EndedAt
 	}
