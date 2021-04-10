@@ -52,7 +52,7 @@ func AddPulseSource(cmd *cobra.Command) {
 	name := string(names.PulseSourceName)
 	cmd.Flags().String(
 		name,
-		"cli",
+		"",
 		"Source of the pulse",
 	)
 }
