@@ -14,4 +14,4 @@ func arrayUsage(name string) string {
 }
 
 // Consistent message telling the user how to use map flags
-const mapUsage = "Key-value pair separated with an equal sign (=)"
+const mapUsage = "Key-value pair separated with an equal sign (= with no surrounding spaces)"

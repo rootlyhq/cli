@@ -59,15 +59,17 @@ curl -fsSL https://raw.githubusercontent.com/rootly-io/cli/main/install.sh | sh
 
 `rootly pulse` allows you to send a [pulse](https://rootly.io/docs/pulses) right from the command-line. The summary for the pulse, which is required, goes at the end of the command as a normal argument.
 
-| **Flag Name** | **Description**                                                         | **Examples**                            | **Required** | **Environment Variable** |
-| ------------- | ----------------------------------------------------------------------- | --------------------------------------- | ------------ | ------------------------ |
-| api-key       | A rootly api key                                                        | `--api-key "ABC123"`                    | Yes          | ROOTLY_API_KEY           |
-| api-host      | Host URL for the rootly api. Default is https://api.rootly.io           | `--api-host "https://rootly.hello.com"` | No           | ROOTLY_API_HOST          |
-| labels        | Key value pair labels (separated with commas with no spaces around `=`) | `--labels "version=2, attempt=1"`       | No           | ROOTLY_LABELS            |
-| services      | Services associated with the pulse (separated with commas)              | `--services "elasticsearch-prod"`       | No           | ROOTLY_SERVICES          |
-| environments  | Environments associated with the pulse (separated with commas)          | `--environments "staging, production"`  | No           | ROOTLY_ENVIRONMENTS      |
-| debug         | If extra logs should be outputted for debugging                         | `--debug`                               | No           | ROOTLY_DEBUG             |
-| quiet         | If all logs should be suppressed                                        | `--quiet`                               | No           | ROOTLY_QUIET             |
+| **Flag Name** | **Description**                                                                                                                             | **Examples**                                            | **Required** | **Environment Variable** |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- | ------------ | ------------------------ |
+| api-key       | A rootly api key                                                                                                                            | `--api-key "ABC123"`                                    | Yes          | ROOTLY_API_KEY           |
+| api-host      | Host URL for the rootly api. Default is https://api.rootly.io                                                                               | `--api-host "https://rootly.hello.com"`                 | No           | ROOTLY_API_HOST          |
+| labels        | Key value pair labels (separated with commas with no spaces around `=`)                                                                     | `--labels "version=2, attempt=1"`                       | No           | ROOTLY_LABELS            |
+| services      | Services associated with the pulse (separated with commas)                                                                                  | `--services "elasticsearch-prod"`                       | No           | ROOTLY_SERVICES          |
+| environments  | Environments associated with the pulse (separated with commas)                                                                              | `--environments "staging, production"`                  | No           | ROOTLY_ENVIRONMENTS      |
+| sources       | Source of the pulse                                                                                                                         | `--source "k8s"`                                        | No           | ROOTLY_SOURCE            |
+| refs          | Refs associated with the pulse. Separate each item with a comma. Key-value pair separated with an equal sign (= with no surrounding spaces) | `--refs "sha=cd62148cbc5eb42168fe99fdb50a364e12b206ac"` | No           | ROOTLY_ENVIRONMENTS      |
+| debug         | If extra logs should be outputted for debugging                                                                                             | `--debug`                                               | No           | ROOTLY_DEBUG             |
+| quiet         | If all logs should be suppressed                                                                                                            | `--quiet`                                               | No           | ROOTLY_QUIET             |
 
 Here are some examples:
 
@@ -76,34 +78,42 @@ Here are some examples:
   - Labels: None
   - Services: None
   - Environments: None
+  - Source: None
+  - Refs None
   - Output: No logs
 - `rootly pulse --api-key "ABC123" --environments "staging, production" --services "elasticsearch-staging, elasticsearch-prod" Hello World!`
   - Summary: Hello World
   - Labels: None
   - Services: elasticsearch-staging and elasticsearch-prod
   - Environments: staging and production
+  - Source: None
+  - Refs None
   - Output: Silent
-- `rootly pulse --api-key ABC123 --environments "production" --quiet --labels "Version=2, Attempt=1" Is this thing on?`
+- `rootly pulse --api-key ABC123 --environments "production" --quiet --labels "Version=2, Attempt=1" --source "k8s" --refs "sha=cd62148cbc5eb42168fe99fdb50a364e12b206ac" Is this thing on?`
   - Summary: Is this thing on?
   - Labels: Version: 2 and Attempt: 1
   - Services: None
   - Environments: production
+  - Source: k8s
+  - Refs: sha: cd62148cbc5eb42168fe99fdb50a364e12b206ac
   - Output: No logs
 
 ### 🏃 `rootly pulse-run`
 
 `rootly pulse-run` allows you to wrap a terminal command and send a [pulse](https://rootly.io/docs/pulses) with a label of the exit code. The summary for the pulse is a flag and if no value is provided it will use the command. The command goes at the end of the command as a normal argument.
 
-| **Flag Name** | **Description**                                                         | **Examples**                            | **Required** | **Environment Variable** |
-| ------------- | ----------------------------------------------------------------------- | --------------------------------------- | ------------ | ------------------------ |
-| api-key       | A rootly api key                                                        | `--api-key "ABC123"`                    | Yes          | ROOTLY_API_KEY           |
-| api-host      | Host URL for the rootly api. Default is https://api.rootly.io           | `--api-host "https://rootly.hello.com"` | No           | ROOTLY_API_HOST          |
-| summary       | Summary for the pulse. Default is just the command                      | `--summary "Deployed Website"`          | No           | ROOTLY_SUMMARY           |
-| labels        | Key value pair labels (separated with commas with no spaces around `=`) | `--labels "Version=2, Attempt=1"`       | No           | ROOTLY_LABELS            |
-| services      | Services associated with the pulse (separated with commas)              | `--services "elasticsearch-prod"`       | No           | ROOTLY_SERVICES          |
-| environments  | Environments associated with the pulse (separated with commas)          | `--environments "staging, production"`  | No           | ROOTLY_ENVIRONMENTS      |
-| debug         | If extra logs should be outputted for debugging                         | `--debug`                               | No           | ROOTLY_DEBUG             |
-| quiet         | If all logs should be suppressed (command will still output)            | `--quiet`                               | No           | ROOTLY_QUIET             |
+| **Flag Name** | **Description**                                                                                                                             | **Examples**                                            | **Required** | **Environment Variable** |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- | ------------ | ------------------------ |
+| api-key       | A rootly api key                                                                                                                            | `--api-key "ABC123"`                                    | Yes          | ROOTLY_API_KEY           |
+| api-host      | Host URL for the rootly api. Default is https://api.rootly.io                                                                               | `--api-host "https://rootly.hello.com"`                 | No           | ROOTLY_API_HOST          |
+| summary       | Summary for the pulse. Default is just the command                                                                                          | `--summary "Deployed Website"`                          | No           | ROOTLY_SUMMARY           |
+| labels        | Key value pair labels (separated with commas with no spaces around `=`)                                                                     | `--labels "Version=2, Attempt=1"`                       | No           | ROOTLY_LABELS            |
+| services      | Services associated with the pulse (separated with commas)                                                                                  | `--services "elasticsearch-prod"`                       | No           | ROOTLY_SERVICES          |
+| environments  | Environments associated with the pulse (separated with commas)                                                                              | `--environments "staging, production"`                  | No           | ROOTLY_ENVIRONMENTS      |
+| sources       | Source of the pulse                                                                                                                         | `--source "k8s"`                                        | No           | ROOTLY_SOURCE            |
+| refs          | Refs associated with the pulse. Separate each item with a comma. Key-value pair separated with an equal sign (= with no surrounding spaces) | `--refs "sha=cd62148cbc5eb42168fe99fdb50a364e12b206ac"` | No           | ROOTLY_ENVIRONMENTS      |
+| debug         | If extra logs should be outputted for debugging                                                                                             | `--debug`                                               | No           | ROOTLY_DEBUG             |
+| quiet         | If all logs should be suppressed (command will still output)                                                                                | `--quiet`                                               | No           | ROOTLY_QUIET             |
 
 Here are some examples:
 
@@ -112,20 +122,26 @@ Here are some examples:
   - Labels: Exit Code: 0
   - Services: None
   - Environments: None
+  - Source: None
+  - Refs: None
   - Command: `make publish`
   - Output: Regular logs
-- `rootly pulse-run --quiet --api-key "ABC123" --environments "staging, production" --services "elasticsearch-staging, elasticsearch-prod" echo Hello World`
+- `rootly pulse-run --quiet --api-key "ABC123" --environments "staging, production" --services "elasticsearch-staging, elasticsearch-prod" --source "k8s" echo Hello World`
   - Summary: echo Hello World
   - Labels: Exit Code: 0
   - Services: elasticsearch-staging and elasticsearch-prod
   - Environments: staging and production
+  - Source: k8s
+  - Refs: None
   - Command: `echo Hello World`
   - Output: No logs
-- `rootly pulse-run --api-key ABC123 --environments "production" --labels "version=2, attempt=1" --summary "Deploy Website" sh deploy.sh`
+- `rootly pulse-run --api-key "ABC123" --environments "production" --labels "version=2, attempt=1" --summary "Deploy Website" --source "k8s" --refs "sha=cd62148cbc5eb42168fe99fdb50a364e12b206ac" sh deploy.sh`
   - Summary: sh deploy.sh
   - Labels: Version: 2, Attempt: 1, and Exit Code: 1
   - Services: None
   - Environments: production
+  - Source: k8s
+  - Refs: sha: cd62148cbc5eb42168fe99fdb50a364e12b206ac
   - Command: `sh deploy.sh`
   - Output: Regular logs
 
@@ -155,5 +171,5 @@ jobs:
           summary: Deploy Website
           environments: production
           services: elasticsearch-prod
-          labels: platform=osx,version=2
+          labels: platform=k8s,version=2
 ```
