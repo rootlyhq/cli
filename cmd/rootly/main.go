@@ -6,6 +6,7 @@ import (
 )
 
 func main() {
+	lumber.ShowStack = false
 	lumber.ErrNilCheck = false
 	commands.Execute()
 }
