@@ -18,9 +18,6 @@
 
 <hr />
 
-## 📜 Table of Contents
-
-- [📜 Table of Contents](#-table-of-contents)
 - [👋 Getting Started](#-getting-started)
   - [🚀 Install](#-install)
     - [🍎 macOS](#-macos)
