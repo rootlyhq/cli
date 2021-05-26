@@ -1,6 +1,8 @@
 name: lint
 
-on: push
+on:
+  - push
+  - pull_request
 
 jobs:
   golangci:
@@ -31,7 +33,7 @@ jobs:
       - name: Linting docker/Dockerfile
         uses: brpaz/hadolint-action@master
         with:
-          dockerfile: 'Dockerfile'
+          dockerfile: "Dockerfile"
   goreleaser:
     runs-on: ubuntu-latest
     steps:
