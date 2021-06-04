@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/Matt-Gleich/lumber"
+	"github.com/gleich/lumber"
 	"github.com/rootly-io/cli/pkg/commands"
 )
 

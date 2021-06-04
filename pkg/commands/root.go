@@ -5,7 +5,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/Matt-Gleich/release"
+	"github.com/gleich/release"
 	"github.com/rootly-io/cli/pkg/log"
 	"github.com/spf13/cobra"
 )

@@ -1,6 +1,6 @@
 package log
 
-import "github.com/Matt-Gleich/lumber"
+import "github.com/gleich/lumber"
 
 var (
 	// If no logs should be outputted
