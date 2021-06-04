@@ -10,7 +10,7 @@ require (
 	github.com/go-openapi/swag v0.19.15 // indirect
 	github.com/labstack/echo/v4 v4.2.2 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
-	github.com/rootly-io/rootly-go v0.0.0-20210414193834-bea1a3871e7e
+	github.com/rootly-io/rootly-go v0.0.0-20210414213127-ca39d8484750
 	github.com/spf13/cobra v1.1.3
 	github.com/stretchr/testify v1.7.0
 	golang.org/x/crypto v0.0.0-20210322153248-0c34fe9e7dc2 // indirect
