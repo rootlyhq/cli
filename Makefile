@@ -17,3 +17,7 @@ lint:
 	golangci-lint run
 	hadolint Dockerfile
 	goreleaser check
+
+release:
+	git tag -a $(VERSION) -m $(VERSION)
+	git push origin $(VERSION)

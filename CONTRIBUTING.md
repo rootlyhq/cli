@@ -21,7 +21,7 @@ Thank you for having an interest in contributing to the rootly CLI!
 
 Just run the following command:
 
-```txt
+```bash
 make test
 ```
 
@@ -35,7 +35,7 @@ Make sure you have the following programs installed:
 
 Once you have all the programs listed above run the following command:
 
-```txt
+```bash
 make lint
 ```
 
@@ -43,13 +43,13 @@ make lint
 
 Build a binary that will go in a folder called bin with the following command:
 
-```txt
+```bash
 make build
 ```
 
 You can also build the docker image with the following command:
 
-```txt
+```bash
 make docker-build
 ```
 
@@ -57,9 +57,8 @@ make docker-build
 
 You can release a new version of the rootly cli (if you have contributor access) by running the following commands:
 
-```txt
-git tag -a v1.0.0 -m "v1.0.0"
-git push origin v1.0.0
+```bash
+make release VERSION="v1.0.0"
 ```
 
 _Replace v1.0.0 with the version you want to release_
