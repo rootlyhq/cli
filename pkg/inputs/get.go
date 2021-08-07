@@ -1,11 +1,11 @@
 package inputs
 
 import (
-	"github.com/rootly-io/cli/pkg/inputs/env"
-	"github.com/rootly-io/cli/pkg/inputs/flags"
-	"github.com/rootly-io/cli/pkg/inputs/parse"
-	"github.com/rootly-io/cli/pkg/log"
-	"github.com/rootly-io/cli/pkg/models"
+	"github.com/rootlyhq/cli/pkg/inputs/env"
+	"github.com/rootlyhq/cli/pkg/inputs/flags"
+	"github.com/rootlyhq/cli/pkg/inputs/parse"
+	"github.com/rootlyhq/cli/pkg/log"
+	"github.com/rootlyhq/cli/pkg/models"
 	"github.com/spf13/cobra"
 )
 

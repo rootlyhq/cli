@@ -5,13 +5,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/rootly-io/cli/pkg/api"
-	"github.com/rootly-io/cli/pkg/commands/pulserun"
-	"github.com/rootly-io/cli/pkg/inputs"
-	"github.com/rootly-io/cli/pkg/inputs/flags"
-	"github.com/rootly-io/cli/pkg/inputs/names"
-	"github.com/rootly-io/cli/pkg/log"
-	"github.com/rootly-io/cli/pkg/models"
+	"github.com/rootlyhq/cli/pkg/api"
+	"github.com/rootlyhq/cli/pkg/commands/pulserun"
+	"github.com/rootlyhq/cli/pkg/inputs"
+	"github.com/rootlyhq/cli/pkg/inputs/flags"
+	"github.com/rootlyhq/cli/pkg/inputs/names"
+	"github.com/rootlyhq/cli/pkg/log"
+	"github.com/rootlyhq/cli/pkg/models"
 	"github.com/spf13/cobra"
 )
 

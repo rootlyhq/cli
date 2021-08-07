@@ -1,9 +1,9 @@
 package flags
 
 import (
-	"github.com/rootly-io/cli/pkg/inputs/parse"
-	"github.com/rootly-io/cli/pkg/log"
-	"github.com/rootly-io/cli/pkg/models"
+	"github.com/rootlyhq/cli/pkg/inputs/parse"
+	"github.com/rootlyhq/cli/pkg/log"
+	"github.com/rootlyhq/cli/pkg/models"
 	"github.com/spf13/cobra"
 )
 

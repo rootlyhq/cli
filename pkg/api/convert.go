@@ -3,9 +3,9 @@ package api
 import (
 	"encoding/json"
 
-	"github.com/rootly-io/cli/pkg/log"
-	"github.com/rootly-io/cli/pkg/models"
-	"github.com/rootly-io/rootly-go"
+	"github.com/rootlyhq/cli/pkg/log"
+	"github.com/rootlyhq/cli/pkg/models"
+	"github.com/rootlyhq/rootly-go"
 )
 
 // Convert a map to a APIObject

@@ -3,14 +3,14 @@
 
   <h1>rootly cli</h1>
 
-  <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/rootly-io/cli">
-  <img alt="GitHub go.mod Go version" src="https://img.shields.io/github/go-mod/go-version/rootly-io/cli">
-  <img alt="Golang report card" src="https://goreportcard.com/badge/github.com/rootly-io/cli">
+  <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/rootlyhq/cli">
+  <img alt="GitHub go.mod Go version" src="https://img.shields.io/github/go-mod/go-version/rootlyhq/cli">
+  <img alt="Golang report card" src="https://goreportcard.com/badge/github.com/rootlyhq/cli">
   <br>
-  <img alt="build" src="https://github.com/rootly-io/cli/workflows/build/badge.svg" />
-  <img alt="lint" src="https://github.com/rootly-io/cli/workflows/lint/badge.svg" />
-  <img alt="release" src="https://github.com/rootly-io/cli/workflows/release/badge.svg" />
-  <img alt="test" src="https://github.com/rootly-io/cli/workflows/test/badge.svg" />
+  <img alt="build" src="https://github.com/rootlyhq/cli/workflows/build/badge.svg" />
+  <img alt="lint" src="https://github.com/rootlyhq/cli/workflows/lint/badge.svg" />
+  <img alt="release" src="https://github.com/rootlyhq/cli/workflows/release/badge.svg" />
+  <img alt="test" src="https://github.com/rootlyhq/cli/workflows/test/badge.svg" />
   <br />
   <br />
   <i>A command-line interface for rootly</i>
@@ -39,15 +39,15 @@ The rootly command-line tool allows you to interact with rootly in your terminal
 Simply run the command below:
 
 ```bash
-brew install rootly-io/homebrew-tap/rootly
+brew install rootlyhq/homebrew-tap/rootly
 ```
 
 #### 🐧 Linux and 🖥️ Windows
 
-You can grab the binary from the [latest release](https://github.com/rootly-io/cli/releases/latest) or run the following shell script:
+You can grab the binary from the [latest release](https://github.com/rootlyhq/cli/releases/latest) or run the following shell script:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/rootly-io/cli/main/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/rootlyhq/cli/main/install.sh | sh
 ```
 
 ## 📟 Commands
@@ -148,7 +148,7 @@ When using the rootly CLI in a CI environment there are some useful features to 
 
 ## 🤖 GitHub Action
 
-There is also a GitHub action for `rootly pulse` that makes it easy to use in a GitHub actions environment. See the [rootly-io/pulse-action](https://github.com/rootly-io/pulse-action) repository for more information. Here is a short little example:
+There is also a GitHub action for `rootly pulse` that makes it easy to use in a GitHub actions environment. See the [rootlyhq/pulse-action](https://github.com/rootlyhq/pulse-action) repository for more information. Here is a short little example:
 
 ```yaml
 name: Deploy Website
@@ -162,7 +162,7 @@ jobs:
       - uses: actions/checkout@v2
       - run: make deploy
       - name: rootly-pulse
-        uses: rootly-io/pulse-action@main
+        uses: rootlyhq/pulse-action@main
         with:
           api_key: ${{ secrets.ROOTLY_API_KEY }}
           summary: Deploy Website

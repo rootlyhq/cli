@@ -5,7 +5,7 @@ import (
 	"os/exec"
 	"strings"
 
-	"github.com/rootly-io/cli/pkg/log"
+	"github.com/rootlyhq/cli/pkg/log"
 )
 
 // Run a given program

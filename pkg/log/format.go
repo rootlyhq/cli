@@ -5,7 +5,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/rootly-io/cli/pkg/models"
+	"github.com/rootlyhq/cli/pkg/models"
 )
 
 // Format a pulse for outputting

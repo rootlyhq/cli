@@ -3,7 +3,7 @@ package inputs
 import (
 	"strings"
 
-	"github.com/rootly-io/cli/pkg/log"
+	"github.com/rootlyhq/cli/pkg/log"
 )
 
 // Convert an array to a simple map separated with |#|

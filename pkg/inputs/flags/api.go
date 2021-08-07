@@ -1,7 +1,7 @@
 package flags
 
 import (
-	"github.com/rootly-io/cli/pkg/inputs/names"
+	"github.com/rootlyhq/cli/pkg/inputs/names"
 	"github.com/spf13/cobra"
 )
 

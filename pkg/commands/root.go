@@ -6,7 +6,7 @@ import (
 	"strings"
 
 	"github.com/gleich/release"
-	"github.com/rootly-io/cli/pkg/log"
+	"github.com/rootlyhq/cli/pkg/log"
 	"github.com/spf13/cobra"
 )
 
@@ -32,7 +32,7 @@ var rootCmd = &cobra.Command{
 
 		if versionFlag {
 			version := "v1.0.1"
-			outdated, v, err := release.Check(version, "https://github.com/rootly-io/cli")
+			outdated, v, err := release.Check(version, "https://github.com/rootlyhq/cli")
 
 			if err != nil {
 				log.Warning("Failed to get latest version of rootly")

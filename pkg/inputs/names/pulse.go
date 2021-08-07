@@ -1,6 +1,6 @@
 package names
 
-import "github.com/rootly-io/cli/pkg/models"
+import "github.com/rootlyhq/cli/pkg/models"
 
 // Pulse config
 const (

@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/gleich/lumber"
-	"github.com/rootly-io/cli/pkg/commands"
+	"github.com/rootlyhq/cli/pkg/commands"
 )
 
 func main() {
