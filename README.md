@@ -170,8 +170,8 @@ jobs:
       - name: rootly-pulse
         uses: rootlyhq/pulse-action@main
         with:
-          api_key: ${{ secrets.ROOTLY_API_KEY }}
-          summary: Deploy Website
+          api_key: ${{ secrets.ROOTLY_API_KEY }} # Required
+          summary: Deploy Website # Required
           environments: production # Not required
           services: elasticsearch-prod # Not required
           labels: platform=ubuntu,version=2 # Not required
