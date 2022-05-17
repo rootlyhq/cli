@@ -2,14 +2,16 @@ package flags
 
 import (
 	"fmt"
-	"strings"
+
+	"golang.org/x/text/cases"
+	"golang.org/x/text/language"
 )
 
 // Consistent message telling the user how to use array string flags
 func arrayUsage(name string) string {
 	return fmt.Sprintf(
 		"%v associated with the pulse. Separate each item with a comma.",
-		strings.Title(name),
+		cases.Title(language.English).String(name),
 	)
 }
 
