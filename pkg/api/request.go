@@ -3,7 +3,7 @@ package api
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"strings"
 
@@ -13,7 +13,7 @@ import (
 	"github.com/rootlyhq/rootly-go"
 )
 
-// Create a pulse on rootly.io
+// Create a pulse on rootly.com
 func CreatePulse(
 	host string,
 	pulse models.Pulse,
@@ -60,7 +60,7 @@ func CreatePulse(
 		}
 	}
 	req.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return log.CtxErr{
 			Context: "Failed to read response from failed request",

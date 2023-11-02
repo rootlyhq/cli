@@ -24,10 +24,10 @@ builds:
       - 7
 
 brews:
-  - tap:
+  - repository:
       owner: rootlyhq
       name: homebrew-tap
     folder: Formula
-    homepage: 'https://rootly.io'
-    description: 'Command line tool for rootly.io'
+    homepage: 'https://rootly.com'
+    description: 'Command line tool for rootly.com'
     install: bin.install "rootly"

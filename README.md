@@ -30,7 +30,7 @@
 
 ## 👋 Getting Started
 
-The rootly command-line tool allows you to interact with rootly in your terminal, CI environment, or anything that can run a simple program. At the moment the main purpose of the cli is to send [pulses](https://rootly.io/docs/pulses) right from the command line. This is great for sending a pulse at the end of a deploy script for example. You can also send pulses based on the exit status of a given command to run.
+The rootly command-line tool allows you to interact with rootly in your terminal, CI environment, or anything that can run a simple program. At the moment the main purpose of the cli is to send [pulses](https://rootly.com/docs/pulses) right from the command line. This is great for sending a pulse at the end of a deploy script for example. You can also send pulses based on the exit status of a given command to run.
 
 ### 🚀 Install
 
@@ -60,12 +60,12 @@ go install github.com/rootlyhq/cli@latest
 
 ### ℹ️ `rootly pulse`
 
-`rootly pulse` allows you to send a [pulse](https://rootly.io/docs/pulses) right from the command-line. The summary for the pulse, which is required, goes at the end of the command as a normal argument.
+`rootly pulse` allows you to send a [pulse](https://rootly.com/docs/pulses) right from the command-line. The summary for the pulse, which is required, goes at the end of the command as a normal argument.
 
 | **Flag Name** | **Description**                                                                                                                             | **Examples**                                            | **Required** | **Environment Variable** |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- | ------------ | ------------------------ |
 | api-key       | A rootly api key                                                                                                                            | `--api-key "ABC123"`                                    | Yes          | ROOTLY_API_KEY           |
-| api-host      | Host URL for the rootly api. Default is https://api.rootly.io                                                                               | `--api-host "https://rootly.hello.com"`                 | No           | ROOTLY_API_HOST          |
+| api-host      | Host URL for the rootly api. Default is https://api.rootly.com                                                                               | `--api-host "https://rootly.hello.com"`                 | No           | ROOTLY_API_HOST          |
 | labels        | Key value pair labels (separated with commas with no spaces around `=`)                                                                     | `--labels "version=2, attempt=1"`                       | No           | ROOTLY_LABELS            |
 | services      | Services associated with the pulse (separated with commas)                                                                                  | `--services "elasticsearch-prod"`                       | No           | ROOTLY_SERVICES          |
 | environments  | Environments associated with the pulse (separated with commas)                                                                              | `--environments "staging, production"`                  | No           | ROOTLY_ENVIRONMENTS      |
@@ -103,12 +103,12 @@ Here are some examples:
 
 ### 🏃 `rootly pulse-run`
 
-`rootly pulse-run` allows you to wrap a terminal command and send a [pulse](https://rootly.io/docs/pulses) with a label of the exit code. The summary for the pulse is a flag and if no value is provided it will use the command. The command goes at the end of the command as a normal argument.
+`rootly pulse-run` allows you to wrap a terminal command and send a [pulse](https://rootly.com/docs/pulses) with a label of the exit code. The summary for the pulse is a flag and if no value is provided it will use the command. The command goes at the end of the command as a normal argument.
 
 | **Flag Name** | **Description**                                                                                                                             | **Examples**                                            | **Required** | **Environment Variable** |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- | ------------ | ------------------------ |
 | api-key       | A rootly api key                                                                                                                            | `--api-key "ABC123"`                                    | Yes          | ROOTLY_API_KEY           |
-| api-host      | Host URL for the rootly api. Default is https://api.rootly.io                                                                               | `--api-host "https://rootly.hello.com"`                 | No           | ROOTLY_API_HOST          |
+| api-host      | Host URL for the rootly api. Default is https://api.rootly.com                                                                               | `--api-host "https://rootly.hello.com"`                 | No           | ROOTLY_API_HOST          |
 | summary       | Summary for the pulse. Default is just the command                                                                                          | `--summary "Deployed Website"`                          | No           | ROOTLY_SUMMARY           |
 | labels        | Key value pair labels (separated with commas with no spaces around `=`)                                                                     | `--labels "Version=2, Attempt=1"`                       | No           | ROOTLY_LABELS            |
 | services      | Services associated with the pulse (separated with commas)                                                                                  | `--services "elasticsearch-prod"`                       | No           | ROOTLY_SERVICES          |
@@ -165,7 +165,7 @@ jobs:
   pulse:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - run: make deploy
       - name: rootly-pulse
         uses: rootlyhq/pulse-action@main
@@ -176,5 +176,5 @@ jobs:
           services: elasticsearch-prod # Not required
           labels: platform=ubuntu,version=2 # Not required
           source: k8s # Not required
-          refs: sha=cd62148cbc5eb42168fe99fdb50a364e12b206ac, image=registry.rootly.io/rootly/my-service:cd6214 # Not required
+          refs: sha=cd62148cbc5eb42168fe99fdb50a364e12b206ac, image=registry.rootly.com/rootly/my-service:cd6214 # Not required
 ```

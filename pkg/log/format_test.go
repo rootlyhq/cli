@@ -71,10 +71,10 @@ func TestFormatPulse(t *testing.T) {
 				},
 				Refs: []map[string]string{
 					{"key": "sha", "value": "cd62148cbc5eb42168fe99fdb50a364e12b206ac"},
-					{"key": "image", "value": "registry.rootly.io/rootly/my-service:cd6214"},
+					{"key": "image", "value": "registry.rootly.com/rootly/my-service:cd6214"},
 				},
 			},
-			expected: "\n\n  Summary:      None\n  Started At:   01 Jan 01 00:00 UTC\n  Ended At      01 Jan 01 00:00 UTC\n  Services:     None\n  Environments: None\n  Labels:       \n    Exit Code = 0\n    Version = 1.0.0\n\n  Source:       None\n  Refs:         \n    sha = cd62148cbc5eb42168fe99fdb50a364e12b206ac\n    image = registry.rootly.io/rootly/my-service:cd6214",
+			expected: "\n\n  Summary:      None\n  Started At:   01 Jan 01 00:00 UTC\n  Ended At      01 Jan 01 00:00 UTC\n  Services:     None\n  Environments: None\n  Labels:       \n    Exit Code = 0\n    Version = 1.0.0\n\n  Source:       None\n  Refs:         \n    sha = cd62148cbc5eb42168fe99fdb50a364e12b206ac\n    image = registry.rootly.com/rootly/my-service:cd6214",
 		},
 		{
 			pulse:    models.Pulse{},

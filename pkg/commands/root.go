@@ -13,7 +13,7 @@ import (
 // The main root command for rootly
 var rootCmd = &cobra.Command{
 	Use:   "rootly",
-	Short: "Command-line Tool for rootly.io",
+	Short: "Command-line Tool for rootly.com",
 	Long: `  	           _   _
    _ __ ___   ___ | |_| |_   _
   | '__/ _ \ / _ \| __| | | | |
@@ -21,7 +21,7 @@ var rootCmd = &cobra.Command{
   |_|  \___/ \___/ \__|_|\__, |
   			  |___/
 
-  Command-line Tool for rootly.io`,
+  Command-line Tool for rootly.com`,
 	Run: func(cmd *cobra.Command, args []string) {
 		versionFlag, err := cmd.Flags().GetBool("version")
 		if err != nil {

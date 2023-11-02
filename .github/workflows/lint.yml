@@ -9,19 +9,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
+      - name: Set up Go 1.x
+        uses: actions/setup-go@v4
+        env:
+          GO111MODULE: off
+        with:
+          go-version: 1.21
+        id: go
       - name: Run Golangci Linter
-        uses: golangci/golangci-lint-action@v2.5.0
+        uses: golangci/golangci-lint-action@v3
+        with:
+          version: latest
   gomod:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Go 1.x
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v4
+        env:
+          GO111MODULE: off
         with:
-          go-version: 1.17
+          go-version: 1.21
         id: go
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - run: |
           go mod tidy
           git diff --exit-code go.mod
@@ -29,7 +40,7 @@ jobs:
   hadolint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Linting docker/Dockerfile
         uses: brpaz/hadolint-action@master
         with:
@@ -38,9 +49,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Run Check
-        uses: goreleaser/goreleaser-action@v2
+        uses: goreleaser/goreleaser-action@v5
         with:
           version: latest
           args: check

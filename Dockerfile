@@ -1,7 +1,7 @@
-FROM golang:1.17 AS builder
+FROM golang:1.21 AS builder
 
 # Meta data
-LABEL maintainer="support@rootly.io"
+LABEL maintainer="support@rootly.com"
 LABEL description="Command-line tool for rootly"
 
 # Copying over all the files

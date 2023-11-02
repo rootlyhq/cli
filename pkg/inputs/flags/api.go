@@ -11,7 +11,7 @@ func AddKey(cmd *cobra.Command) {
 		string(names.ApiKeyName),
 		"k",
 		"",
-		"api key generated from rootly.io. See https://rootly.io/api#section/How-to-generate-an-API-Key for more info.",
+		"api key generated from rootly.com. See https://rootly.com/api#section/How-to-generate-an-API-Key for more info.",
 	)
 }
 
@@ -19,7 +19,7 @@ func AddKey(cmd *cobra.Command) {
 func AddHost(cmd *cobra.Command) {
 	cmd.Flags().String(
 		string(names.ApiHostName),
-		"https://api.rootly.io",
+		"https://api.rootly.com",
 		"Host URL for the rootly api.",
 	)
 }
