@@ -14,5 +14,5 @@ RUN go get -v -t -d all
 RUN make build
 
 # hadolint ignore=DL3006,DL3007
-FROM golang:alpine
+FROM alpine:latest
 COPY --from=builder /usr/src/app/bin/rootly /usr/local/bin/rootly

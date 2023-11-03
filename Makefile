@@ -1,5 +1,5 @@
 build:
-	go build -tags netgo -a -v -o ./bin/rootly ./cmd/rootly/
+	CGO_ENABLED=0 go build -tags netgo -a -v -o ./bin/rootly ./cmd/rootly/
 
 docker-build:
 	docker build -t rootlyhub/cli .
