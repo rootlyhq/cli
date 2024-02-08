@@ -77,6 +77,12 @@ func TestFormatPulse(t *testing.T) {
 			expected: "\n\n  Summary:      None\n  Started At:   01 Jan 01 00:00 UTC\n  Ended At      01 Jan 01 00:00 UTC\n  Services:     None\n  Environments: None\n  Labels:       \n    Exit Code = 0\n    Version = 1.0.0\n\n  Source:       None\n  Refs:         \n    sha = cd62148cbc5eb42168fe99fdb50a364e12b206ac\n    image = registry.rootly.com/rootly/my-service:cd6214",
 		},
 		{
+			pulse: models.Pulse{
+				Source: "k8s",
+			},
+			expected: "\n\n  Summary:      None\n  Started At:   01 Jan 01 00:00 UTC\n  Ended At      01 Jan 01 00:00 UTC\n  Services:     None\n  Environments: None\n  Labels:       None\n  Source:       k8s\n  Refs:         None",
+		},
+		{
 			pulse:    models.Pulse{},
 			expected: "\n\n  Summary:      None\n  Started At:   01 Jan 01 00:00 UTC\n  Ended At      01 Jan 01 00:00 UTC\n  Services:     None\n  Environments: None\n  Labels:       None\n  Source:       None\n  Refs:         None",
 		},
