@@ -16,17 +16,22 @@ func errIfNoVal(name models.ConfigPiece) log.CtxErr {
 
 // Get a string configuration value
 func GetString(name models.ConfigPiece, cmd *cobra.Command, required bool) (string, log.CtxErr) {
-	// Getting the value from a command line flag if possible
-	val, err := flags.GetString(name, cmd)
-	if err.Error != nil {
-		return "", err
-	}
-	if val != "" {
-		return val, err
+
+	// Getting value from env first
+	err := log.CtxErr{}
+	val := env.GetString(name)
+
+	if val == "" {
+		// Getting the value from a command line flag if possible
+		val, err = flags.GetString(name, cmd)
+		if err.Error != nil {
+			return "", err
+		}
+		if val != "" {
+			return val, err
+		}
 	}
 
-	// No value from flag so falling back on possible env var
-	val = env.GetString(name)
 	if val == "" && required {
 		return "", errIfNoVal(name)
 	}
