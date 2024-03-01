@@ -13,7 +13,7 @@ require (
 	github.com/labstack/echo/v4 v4.11.4 // indirect
 	github.com/rootlyhq/rootly-go v0.0.0-20231102142214-b4bf4a25db2a
 	github.com/spf13/cobra v1.8.0
-	github.com/stretchr/testify v1.8.4
+	github.com/stretchr/testify v1.9.0
 	golang.org/x/crypto v0.19.0 // indirect
 	golang.org/x/net v0.21.0 // indirect
 	golang.org/x/sys v0.17.0 // indirect
