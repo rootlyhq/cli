@@ -27,7 +27,7 @@ brews:
   - repository:
       owner: rootlyhq
       name: homebrew-tap
-    folder: Formula
+    directory: Formula
     homepage: 'https://rootly.com'
     description: 'Command line tool for rootly.com'
     install: bin.install "rootly"
