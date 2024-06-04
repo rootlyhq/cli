@@ -19,7 +19,7 @@ require (
 	golang.org/x/sys v0.20.0 // indirect
 )
 
-require golang.org/x/text v0.15.0
+require golang.org/x/text v0.16.0
 
 require (
 	github.com/BurntSushi/toml v1.3.2 // indirect
