@@ -5,7 +5,7 @@ go 1.22
 toolchain go1.22.2
 
 require (
-	github.com/deepmap/oapi-codegen v1.16.2
+	github.com/deepmap/oapi-codegen v1.16.3
 	github.com/fatih/color v1.16.0 // indirect
 	github.com/getkin/kin-openapi v0.124.0 // indirect
 	github.com/gleich/lumber v1.1.4
