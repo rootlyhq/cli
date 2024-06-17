@@ -12,7 +12,7 @@ require (
 	github.com/gleich/release v0.0.0-20230101033802-94e8f26aab77
 	github.com/labstack/echo/v4 v4.12.0 // indirect
 	github.com/rootlyhq/rootly-go v0.0.0-20231102142214-b4bf4a25db2a
-	github.com/spf13/cobra v1.8.0
+	github.com/spf13/cobra v1.8.1
 	github.com/stretchr/testify v1.9.0
 	golang.org/x/crypto v0.24.0 // indirect
 	golang.org/x/net v0.26.0 // indirect
