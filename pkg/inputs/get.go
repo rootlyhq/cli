@@ -77,7 +77,11 @@ func GetStringSimpleMapArray(
 
 	vals := parse.Array(str)
 	if len(vals) != 0 {
-		return convertToSimpleMapArray(vals), err
+		result, convertErr := convertToSimpleMapArray(vals)
+		if convertErr.Error != nil {
+			return []map[string]string{}, convertErr
+		}
+		return result, err
 	}
 
 	// No value from flag so falling back on possible env var
@@ -86,7 +90,11 @@ func GetStringSimpleMapArray(
 		return []map[string]string{}, errIfNoVal(name)
 	}
 
-	return convertToSimpleMapArray(vals), log.CtxErr{}
+	result, convertErr := convertToSimpleMapArray(vals)
+	if convertErr.Error != nil {
+		return []map[string]string{}, convertErr
+	}
+	return result, log.CtxErr{}
 }
 
 // Get a boolean based array configuration value
