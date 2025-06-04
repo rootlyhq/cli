@@ -31,7 +31,7 @@ var rootCmd = &cobra.Command{
 		}
 
 		if versionFlag {
-			version := "v1.0.1"
+			version := "v1.2.8"
 			outdated, v, err := release.Check(version, "https://github.com/rootlyhq/cli")
 
 			if err != nil {
