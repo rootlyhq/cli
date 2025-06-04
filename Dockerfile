@@ -7,11 +7,9 @@ LABEL description="Command-line tool for rootly"
 # Copying over all the files
 COPY . /usr/src/app
 WORKDIR /usr/src/app
-# Installing dependencies
-RUN go get -v -t -d all
-
-# Build the binary
-RUN make build
+# Installing dependencies and build the binary
+RUN go get -v -t -d all && \
+    make build
 
 # hadolint ignore=DL3006,DL3007
 FROM alpine:latest
