@@ -11,6 +11,14 @@ before:
 
 builds:
   - main: ./cmd/rootly
+    env:
+      - CGO_ENABLED=0
+    flags:
+      - -tags=netgo
+      - -a
+      - -v
+    ldflags:
+      - -extldflags "-static"
     goos:
       - darwin
       - linux
