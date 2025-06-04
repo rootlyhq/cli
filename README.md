@@ -50,10 +50,10 @@ You can grab the binary from the [latest release](https://github.com/rootlyhq/cl
 curl -fsSL https://raw.githubusercontent.com/rootlyhq/cli/main/install.sh | sh
 ```
 
-If you have golang installed you can also just install the binary using the following command. Keep in mind that this will go in `~/go/bin/` by default which might not be in your path.
+If you have golang installed you can also just install the binary using the following command. Keep in mind that this will go in your `$GOPATH` (`~/go/bin/` by default) which might not be in your path.
 
 ```bash
-go install github.com/rootlyhq/cli@latest
+go install github.com/rootlyhq/cli/cmd/rootly@latest
 ```
 
 ## 📟 Commands
