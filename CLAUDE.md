@@ -43,11 +43,36 @@ make docker-build
 make docker-push
 ```
 
-### Release
+### Release & Version Management
+
+The project uses semantic versioning with automated version bumping:
+
 ```bash
-# Create and push a new version tag
+# Show current and next versions
+make version-show
+
+# Bump versions (updates root.go, commits, creates tag, and pushes)
+make release-patch  # 1.2.10 → 1.2.11 (for bug fixes)
+make release-minor  # 1.2.10 → 1.3.0 (for new features)
+make release-major  # 1.2.10 → 2.0.0 (for breaking changes)
+
+# Or use individual steps
+make version-patch  # Just bump and tag patch version
+make version-minor  # Just bump and tag minor version
+make version-major  # Just bump and tag major version
+
+# Preview next version without making changes
+make version-next
+
+# Legacy manual release (requires VERSION variable)
 make release VERSION="v1.0.0"
 ```
+
+**Note**: Version bumping requires a clean git working directory. The script will:
+1. Update version in `pkg/commands/root.go`
+2. Commit the change
+3. Create and push a git tag
+4. Trigger GitHub Actions to build and publish the release
 
 ## Architecture
 
@@ -109,7 +134,25 @@ Critical fix context: Recent fix addressed panic in key-value parsing for refs a
 
 ## Version Management
 
-Current version is hardcoded in `pkg/commands/root.go:34`. Update this file when releasing new versions.
+Current version is maintained in `pkg/commands/root.go:34` and managed through git tags.
+
+### Version Bumping Process
+
+The `scripts/bump-version.sh` script automates version management:
+1. Reads current version from latest git tag
+2. Calculates next version based on semver (patch/minor/major)
+3. Updates `pkg/commands/root.go` with new version
+4. Commits the change with message "Update version to vX.Y.Z"
+5. Creates annotated git tag (vX.Y.Z)
+6. Pushes commit and tag to origin
+
+### Usage
+
+Use Makefile targets for version management:
+- `make version-show` - Display current and next versions
+- `make release-patch` - Bump patch (bug fixes)
+- `make release-minor` - Bump minor (new features)
+- `make release-major` - Bump major (breaking changes)
 
 The CLI checks for updates on `--version` flag using the `gleich/release` package.
 
