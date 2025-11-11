@@ -16,7 +16,7 @@ require (
 	golang.org/x/sys v0.37.0 // indirect
 )
 
-require golang.org/x/text v0.30.0
+require golang.org/x/text v0.31.0
 
 require (
 	github.com/apapsch/go-jsonmerge/v2 v2.0.0 // indirect
