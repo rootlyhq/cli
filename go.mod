@@ -11,7 +11,7 @@ require (
 	github.com/gleich/release v0.0.0-20250104214451-94c42533123f
 	github.com/oapi-codegen/oapi-codegen/v2 v2.5.1
 	github.com/rootlyhq/rootly-go v0.1.0
-	github.com/spf13/cobra v1.10.1
+	github.com/spf13/cobra v1.10.2
 	github.com/stretchr/testify v1.11.1
 	golang.org/x/sys v0.37.0 // indirect
 )
