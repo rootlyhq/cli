@@ -2,7 +2,9 @@ package api
 
 import (
 	"encoding/json"
+	"time"
 
+	"github.com/oapi-codegen/nullable"
 	"github.com/rootlyhq/cli/pkg/log"
 	"github.com/rootlyhq/cli/pkg/models"
 	"github.com/rootlyhq/rootly-go"
@@ -33,22 +35,22 @@ func convertObject(maps []map[string]string) []struct {
 func convertPulse(pulse models.Pulse) (string, log.CtxErr) {
 	// Putting data into rootly.NewPulse
 	// We need to add optional data conditionally because the
-	// rootly library uses pointers for everything
+	// rootly library uses nullable types for optional fields
 	var data rootly.NewPulse
 	data.Data.Type = "pulses"
 	data.Data.Attributes.Summary = pulse.Summary
-	data.Data.Attributes.Source = &pulse.Source
+	data.Data.Attributes.Source = nullable.NewNullableWithValue(pulse.Source)
 	if !pulse.EndedAt.IsZero() {
-		data.Data.Attributes.EndedAt = &pulse.EndedAt
+		data.Data.Attributes.EndedAt = nullable.NewNullableWithValue[time.Time](pulse.EndedAt)
 	}
 	if !pulse.StartedAt.IsZero() {
-		data.Data.Attributes.StartedAt = &pulse.StartedAt
+		data.Data.Attributes.StartedAt = nullable.NewNullableWithValue[time.Time](pulse.StartedAt)
 	}
 	if len(pulse.ServiceIds) != 0 {
-		data.Data.Attributes.ServiceIds = &pulse.ServiceIds
+		data.Data.Attributes.ServiceIds = nullable.NewNullableWithValue(pulse.ServiceIds)
 	}
 	if len(pulse.EnvironmentIds) != 0 {
-		data.Data.Attributes.EnvironmentIds = &pulse.EnvironmentIds
+		data.Data.Attributes.EnvironmentIds = nullable.NewNullableWithValue(pulse.EnvironmentIds)
 	}
 	labels := convertObject(pulse.Labels)
 	if len(labels) != 0 {
