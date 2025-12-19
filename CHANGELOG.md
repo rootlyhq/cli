@@ -7,12 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Upgrade github.com/rootlyhq/rootly-go from v0.1.0 to v0.2.0
+  - Update API client to use `nullable.Nullable[T]` types instead of pointers for optional fields
+  - Add `github.com/oapi-codegen/nullable` as a direct dependency
+- Upgrade golang.org/x/text from v0.31.0 to v0.32.0
+
+## [v1.3.1] - 2025-12-04
+
+### Changed
+- Upgrade Go dependencies
+  - golang.org/x/text: v0.30.0 → v0.31.0
+  - github.com/spf13/cobra: v1.10.1 → v1.10.2
+  - golang.org/x/sys: v0.37.0 → v0.38.0
+
+## [v1.3.0] - 2025-11-07
+
 ### Added
 - Add CLAUDE.md documentation for Claude Code assistance
 - Add version management helpers and Makefile improvements
   - Add `scripts/bump-version.sh` for automated semantic versioning
   - Add new Makefile targets: `version-show`, `version-patch/minor/major`, `release-patch/minor/major`
   - Add help target with self-documenting commands
+- Add CHANGELOG.md based on git history
 
 ### Changed
 - Update Go to 1.25 and upgrade all dependencies
@@ -22,6 +39,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - github.com/getkin/kin-openapi: v0.132.0 → v0.133.0
   - golang.org/x/sys: v0.33.0 → v0.37.0
   - golang.org/x/text: v0.25.0 → v0.30.0
+
+### Fixed
+- Fix golangci-lint compatibility with Go 1.25 by building from source
 
 ## [v1.2.10] - 2025-06-04
 
@@ -214,7 +234,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Unit tests
 - Linting with golangci-lint and hadolint
 
-[Unreleased]: https://github.com/rootlyhq/cli/compare/v1.2.10...HEAD
+[Unreleased]: https://github.com/rootlyhq/cli/compare/v1.3.1...HEAD
+[v1.3.1]: https://github.com/rootlyhq/cli/compare/v1.3.0...v1.3.1
+[v1.3.0]: https://github.com/rootlyhq/cli/compare/v1.2.10...v1.3.0
 [v1.2.10]: https://github.com/rootlyhq/cli/compare/v1.2.9...v1.2.10
 [v1.2.9]: https://github.com/rootlyhq/cli/compare/v1.2.8...v1.2.9
 [v1.2.8]: https://github.com/rootlyhq/cli/compare/v1.2.7...v1.2.8
