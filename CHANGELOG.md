@@ -7,10 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v2.0.0] - 2025-12-19
+
 ### Changed
-- Upgrade github.com/rootlyhq/rootly-go from v0.1.0 to v0.2.0
+- **BREAKING**: Upgrade github.com/rootlyhq/rootly-go from v0.1.0 to v0.2.0
   - Update API client to use `nullable.Nullable[T]` types instead of pointers for optional fields
   - Add `github.com/oapi-codegen/nullable` as a direct dependency
+  - JSON serialization now omits unset nullable fields instead of including `null` values
 - Upgrade golang.org/x/text from v0.31.0 to v0.32.0
 
 ## [v1.3.1] - 2025-12-04
@@ -234,7 +237,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Unit tests
 - Linting with golangci-lint and hadolint
 
-[Unreleased]: https://github.com/rootlyhq/cli/compare/v1.3.1...HEAD
+[Unreleased]: https://github.com/rootlyhq/cli/compare/v2.0.0...HEAD
+[v2.0.0]: https://github.com/rootlyhq/cli/compare/v1.3.1...v2.0.0
 [v1.3.1]: https://github.com/rootlyhq/cli/compare/v1.3.0...v1.3.1
 [v1.3.0]: https://github.com/rootlyhq/cli/compare/v1.2.10...v1.3.0
 [v1.2.10]: https://github.com/rootlyhq/cli/compare/v1.2.9...v1.2.10
