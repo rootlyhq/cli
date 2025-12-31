@@ -56,7 +56,8 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
       - name: Run Check
-        uses: goreleaser/goreleaser-action@v5
+        uses: goreleaser/goreleaser-action@v6
         with:
+          distribution: goreleaser
           version: latest
           args: check
