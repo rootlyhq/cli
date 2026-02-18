@@ -1,7 +1,24 @@
+> **DEPRECATED**: This repository has been archived. Please use [rootlyhq/rootly-cli](https://github.com/rootlyhq/rootly-cli) instead.
+>
+> Install the new CLI:
+> ```bash
+> brew install rootlyhq/homebrew-tap/rootly-cli
+> ```
+>
+> **Migration guide:**
+> | Old command | New command |
+> |---|---|
+> | `rootly pulse <summary>` | `rootly pulse create <summary>` |
+> | `rootly pulse-run <cmd>` | `rootly pulse run -- <cmd>` |
+>
+> All flags (`--api-key`, `--api-host`, `--labels`, `--services`, `--environments`, `--source`, `--refs`, `--debug`, `--quiet`) and environment variables (`ROOTLY_API_KEY`, `ROOTLY_API_HOST`, etc.) remain the same.
+
+---
+
 <div align="center">
   <img alt="logo" src="./docs/images/logo.png" height="250px">
 
-  <h1>rootly cli</h1>
+  <h1>rootly cli (deprecated)</h1>
 
   <img alt="GitHub release (latest by date)" src="https://img.shields.io/github/v/release/rootlyhq/cli">
   <img alt="GitHub go.mod Go version" src="https://img.shields.io/github/go-mod/go-version/rootlyhq/cli">
@@ -18,23 +35,23 @@
 
 <hr />
 
-- [👋 Getting Started](#-getting-started)
-  - [🚀 Install](#-install)
-    - [🍎 macOS](#-macos)
-    - [🐧 Linux and 🖥️ Windows](#-linux-and-️-windows)
-- [📟 Commands](#-commands)
-  - [ℹ️ `rootly pulse`](#ℹ️-rootly-pulse)
-  - [🏃 `rootly pulse-run`](#-rootly-pulse-run)
-- [📦 Running in CI](#-running-in-ci)
-- [🤖 GitHub Action](#-github-action)
+- [Getting Started](#-getting-started)
+  - [Install](#-install)
+    - [macOS](#-macos)
+    - [Linux and Windows](#-linux-and-️-windows)
+- [Commands](#-commands)
+  - [`rootly pulse`](#ℹ️-rootly-pulse)
+  - [`rootly pulse-run`](#-rootly-pulse-run)
+- [Running in CI](#-running-in-ci)
+- [GitHub Action](#-github-action)
 
-## 👋 Getting Started
+## Getting Started
 
 The rootly command-line tool allows you to interact with rootly in your terminal, CI environment, or anything that can run a simple program. At the moment the main purpose of the cli is to send [pulses](https://rootly.com/docs/pulses) right from the command line. This is great for sending a pulse at the end of a deploy script for example. You can also send pulses based on the exit status of a given command to run.
 
-### 🚀 Install
+### Install
 
-#### 🍎 macOS
+#### macOS
 
 Simply run the command below:
 
@@ -42,7 +59,7 @@ Simply run the command below:
 brew install rootlyhq/homebrew-tap/rootly
 ```
 
-#### 🐧 Linux and 🖥️ Windows
+#### Linux and Windows
 
 You can grab the binary from the [latest release](https://github.com/rootlyhq/cli/releases/latest) or run the command below.
 
@@ -56,9 +73,9 @@ If you have golang installed you can also just install the binary using the foll
 go install github.com/rootlyhq/cli/cmd/rootly@latest
 ```
 
-## 📟 Commands
+## Commands
 
-### ℹ️ `rootly pulse`
+### `rootly pulse`
 
 `rootly pulse` allows you to send a [pulse](https://rootly.com/docs/pulses) right from the command-line. The summary for the pulse, which is required, goes at the end of the command as a normal argument.
 
@@ -101,7 +118,7 @@ Here are some examples:
   - Refs: sha: cd62148cbc5eb42168fe99fdb50a364e12b206ac
   - Output: No logs
 
-### 🏃 `rootly pulse-run`
+### `rootly pulse-run`
 
 `rootly pulse-run` allows you to wrap a terminal command and send a [pulse](https://rootly.com/docs/pulses) with a label of the exit code. The summary for the pulse is a flag and if no value is provided it will use the command. The command goes at the end of the command as a normal argument.
 
@@ -148,11 +165,11 @@ Here are some examples:
   - Command: `sh deploy.sh`
   - Output: Regular logs
 
-## 📦 Running in CI
+## Running in CI
 
 When using the rootly CLI in a CI environment there are some useful features to make the process easier. Every single flag can use an environment variable instead. The `api-key` flag for example could use the environment variable `ROOTLY_API_KEY` instead. To get the environment variable for a certain flag just replace all hyphens (`-`) with underscores (`_`), make all letters uppercase, and add `ROOTLY_` to the front.
 
-## 🤖 GitHub Action
+## GitHub Action
 
 There is also a GitHub action for `rootly pulse` that makes it easy to use in a GitHub actions environment. See the [rootlyhq/pulse-action](https://github.com/rootlyhq/pulse-action) repository for more information. Here is a short little example:
 
