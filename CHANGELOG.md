@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- **BREAKING**: Upgrade github.com/rootlyhq/rootly-go from v0.2.0 to v0.8.0
+  - Rename `ServiceIds` to `ServiceIDs` and `EnvironmentIds` to `EnvironmentIDs` for Go naming conventions
+  - Update `Labels` and `Refs` fields to use `[]nullable.Nullable[struct{...}]` instead of pointer-to-slice
+- Upgrade github.com/oapi-codegen/oapi-codegen/v2 from v2.5.1 to v2.6.0
+- Upgrade golang.org/x/text from v0.32.0 to v0.34.0
+- Migrate GoReleaser config to v2 and upgrade goreleaser-action to v6
+
+### Fixed
+- Replace deprecated `go get -v -t -d all` with `go mod download` in Dockerfile
+
+### Added
+- Add deprecation warning pointing users to rootlyhq/rootly-cli
+
 ## [v2.0.0] - 2025-12-19
 
 ### Changed
