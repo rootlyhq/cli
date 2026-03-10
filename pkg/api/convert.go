@@ -10,23 +10,23 @@ import (
 	"github.com/rootlyhq/rootly-go"
 )
 
-// Convert a map to a APIObject
-func convertObject(maps []map[string]string) []struct {
-	Key   string "json:\"key\""
-	Value string "json:\"value\""
-} {
-	objects := []struct {
+// Convert a map to nullable API objects
+func convertObject(maps []map[string]string) []nullable.Nullable[struct {
+	Key   string `json:"key"`
+	Value string `json:"value"`
+}] {
+	var objects []nullable.Nullable[struct {
 		Key   string `json:"key"`
 		Value string `json:"value"`
-	}{}
+	}]
 	for _, mapData := range maps {
-		objects = append(objects, struct {
+		objects = append(objects, nullable.NewNullableWithValue(struct {
 			Key   string `json:"key"`
 			Value string `json:"value"`
 		}{
 			Key:   mapData["key"],
 			Value: mapData["value"],
-		})
+		}))
 	}
 	return objects
 }
@@ -47,18 +47,18 @@ func convertPulse(pulse models.Pulse) (string, log.CtxErr) {
 		data.Data.Attributes.StartedAt = nullable.NewNullableWithValue[time.Time](pulse.StartedAt)
 	}
 	if len(pulse.ServiceIds) != 0 {
-		data.Data.Attributes.ServiceIds = nullable.NewNullableWithValue(pulse.ServiceIds)
+		data.Data.Attributes.ServiceIDs = nullable.NewNullableWithValue(pulse.ServiceIds)
 	}
 	if len(pulse.EnvironmentIds) != 0 {
-		data.Data.Attributes.EnvironmentIds = nullable.NewNullableWithValue(pulse.EnvironmentIds)
+		data.Data.Attributes.EnvironmentIDs = nullable.NewNullableWithValue(pulse.EnvironmentIds)
 	}
 	labels := convertObject(pulse.Labels)
 	if len(labels) != 0 {
-		data.Data.Attributes.Labels = &labels
+		data.Data.Attributes.Labels = labels
 	}
 	refs := convertObject(pulse.Refs)
 	if len(refs) != 0 {
-		data.Data.Attributes.Refs = &refs
+		data.Data.Attributes.Refs = refs
 	}
 
 	// Marshaling the data
