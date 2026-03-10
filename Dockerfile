@@ -8,7 +8,7 @@ LABEL description="Command-line tool for rootly"
 COPY . /usr/src/app
 WORKDIR /usr/src/app
 # Installing dependencies and build the binary
-RUN go get -v -t -d all && \
+RUN go mod download && \
     make build
 
 # hadolint ignore=DL3006,DL3007
