@@ -17,7 +17,7 @@ require (
 )
 
 require (
-	github.com/oapi-codegen/nullable v1.1.0
+	github.com/oapi-codegen/nullable v1.2.0
 	golang.org/x/text v0.34.0
 )
 
