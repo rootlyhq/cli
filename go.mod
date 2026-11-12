@@ -1,8 +1,6 @@
 module github.com/rootlyhq/cli
 
-go 1.25
-
-toolchain go1.25.0
+go 1.26.0
 
 require (
 	github.com/fatih/color v1.18.0 // indirect
@@ -18,7 +16,7 @@ require (
 
 require (
 	github.com/oapi-codegen/nullable v1.1.0
-	golang.org/x/text v0.34.0
+	golang.org/x/text v0.43.0
 )
 
 require (
