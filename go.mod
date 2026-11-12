@@ -1,8 +1,6 @@
 module github.com/rootlyhq/cli
 
-go 1.25
-
-toolchain go1.25.0
+go 1.26.11
 
 require (
 	github.com/fatih/color v1.18.0 // indirect
